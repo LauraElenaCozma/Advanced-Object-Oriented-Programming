@@ -1,4 +1,4 @@
-*** Model ***
+## Model 
 1. Event
 2. TicketDetails
 3. SoldTicket
