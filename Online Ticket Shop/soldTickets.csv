@@ -1,4 +1,4 @@
-Ticket id,Client id,TicketDetails id,Price
+Ticket id,Client id,TicketDetails id,Price,
 6,3,5,56.0,
-8,2,9,12.5,
+8,2,13,12.5,
 9,2,12,25.0,
