@@ -22,6 +22,22 @@ public class Location {
         this.locationName = locationName;
     }
 
+    public Location(int idLocation, String venue, String country, String city, String locationName) {
+        this.idLocation = idLocation;
+        this.venue = venue;
+        this.country = country;
+        this.city = city;
+        this.locationName = locationName;
+    }
+
+    public static int getUniqueId() {
+        return uniqueId;
+    }
+
+    public static void setUniqueId(int uniqueId) {
+        Location.uniqueId = uniqueId;
+    }
+
     public String getVenue() {
 
         return venue;
@@ -80,7 +96,7 @@ public class Location {
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", locationName='" + locationName + '\'' +
-                "}";
+                "}\n";
     }
 
     @Override

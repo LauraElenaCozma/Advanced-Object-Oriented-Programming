@@ -1,0 +1,510 @@
+Action,Date
+Get eventRepository,2020-04-22 01:34:53.707
+Get ticketDetailsRepository,2020-04-22 01:34:53.739
+Get all the events,2020-04-22 01:36:03.848
+Add event,2020-04-22 01:36:20.784
+Get all the events,2020-04-22 01:36:23.446
+Get eventRepository,2020-04-22 01:36:47.55
+Get ticketDetailsRepository,2020-04-22 01:36:47.579
+Get all the events,2020-04-22 01:36:53.703
+Add event,2020-04-22 01:37:05.116
+Get all the events,2020-04-22 01:37:07.828
+Add event,2020-04-22 01:37:37.891
+Get all the events,2020-04-22 01:37:42.55
+Get all clients,2020-04-22 01:37:53.873
+Add client,2020-04-22 01:38:19.375
+Get all clients,2020-04-22 01:38:24.627
+Get eventRepository,2020-04-22 01:38:34.341
+Get ticketDetailsRepository,2020-04-22 01:38:34.373
+Get all the events,2020-04-22 01:38:39.825
+Add event,2020-04-22 01:40:01.26
+Get all the events,2020-04-22 01:40:04.423
+Get all clients,2020-04-22 01:40:13.376
+Add client,2020-04-22 01:40:38.098
+Get all clients,2020-04-22 01:40:51.377
+Get eventRepository,2020-04-22 01:41:15.819
+Get ticketDetailsRepository,2020-04-22 01:41:15.85
+Add client,2020-04-22 01:41:31.928
+Get all clients,2020-04-22 01:41:33.423
+Get eventRepository,2020-04-22 01:44:19.592
+Get ticketDetailsRepository,2020-04-22 01:44:19.623
+Get all the events,2020-04-22 01:44:25.717
+Get all clients,2020-04-22 01:44:53.097
+Add client,2020-04-22 01:45:30.898
+Get all clients,2020-04-22 01:45:33.296
+Get eventRepository,2020-04-22 01:45:40.749
+Get ticketDetailsRepository,2020-04-22 01:45:40.779
+Add client,2020-04-22 01:46:11.728
+Get all clients,2020-04-22 01:46:13.463
+Add client,2020-04-22 01:46:41.278
+Get all clients,2020-04-22 01:46:44.083
+Get all the events,2020-04-22 01:46:51.308
+Get ticket details,2020-04-22 01:46:57.695
+Add ticket details,2020-04-22 01:47:11.331
+Get ticket details,2020-04-22 01:47:12.669
+Get eventRepository,2020-04-22 01:47:25.237
+Get ticketDetailsRepository,2020-04-22 01:47:25.266
+Get ticket details,2020-04-22 01:47:42.809
+Add ticket details,2020-04-22 01:47:59.196
+Get ticket details,2020-04-22 01:48:00.875
+Add ticket details,2020-04-22 01:48:19.412
+Get ticket details,2020-04-22 01:48:20.999
+Add ticket,2020-04-22 01:48:47.725
+Update final price of ticket,2020-04-22 01:48:47.729
+Get ticket details by id,2020-04-22 01:48:47.73
+Get event by id,2020-04-22 01:48:47.732
+Get client by id,2020-04-22 01:48:47.733
+Get sold tickets,2020-04-22 01:48:55.076
+Add ticket,2020-04-22 01:49:04.187
+Update final price of ticket,2020-04-22 01:49:04.19
+Get ticket details by id,2020-04-22 01:49:04.192
+Get event by id,2020-04-22 01:49:04.193
+Get client by id,2020-04-22 01:49:04.194
+Get sold tickets,2020-04-22 01:49:07.224
+Get locations,2020-04-22 01:52:51.181
+Add location,2020-04-22 01:53:04.885
+Add location,2020-04-22 01:53:27.48
+Get locations,2020-04-22 01:53:29.38
+Get eventRepository,2020-04-22 01:53:36.443
+Get ticketDetailsRepository,2020-04-22 01:53:36.471
+Add location,2020-04-22 01:54:09.941
+Get locations,2020-04-22 01:54:11.613
+Add ticket,2020-04-22 01:54:32.509
+Update final price of ticket,2020-04-22 01:54:32.512
+Get ticket details by id,2020-04-22 01:54:32.514
+Get event by id,2020-04-22 01:54:32.515
+Get client by id,2020-04-22 01:54:32.516
+Get sold tickets,2020-04-22 01:54:37.072
+Get ticket details,2020-04-22 01:55:25.718
+Get all the events,2020-04-22 01:55:38.415
+Get eventRepository,2020-04-22 02:05:33.791
+Get ticketDetailsRepository,2020-04-22 02:05:33.821
+Get sold tickets,2020-04-22 02:05:40.827
+Add ticket,2020-04-22 02:05:54.125
+Update final price of ticket,2020-04-22 02:05:54.128
+Get ticket details by id,2020-04-22 02:05:54.129
+Get event by id,2020-04-22 02:05:54.137
+Get client by id,2020-04-22 02:05:54.138
+Add ticket,2020-04-22 02:06:06.171
+Update final price of ticket,2020-04-22 02:06:06.173
+Get ticket details by id,2020-04-22 02:06:06.174
+Get event by id,2020-04-22 02:06:06.175
+Get client by id,2020-04-22 02:06:06.176
+Get sold tickets,2020-04-22 02:06:10.064
+Get eventRepository,2020-04-22 02:06:18.772
+Get ticketDetailsRepository,2020-04-22 02:06:18.803
+Get sold tickets,2020-04-22 02:06:28.108
+Get eventRepository,2020-04-22 02:08:20.028
+Get ticketDetailsRepository,2020-04-22 02:08:20.061
+Get eventRepository,2020-04-22 02:08:50.894
+Get ticketDetailsRepository,2020-04-22 02:08:50.928
+Add ticket,2020-04-22 02:09:02.382
+Update final price of ticket,2020-04-22 02:09:02.385
+Get ticket details by id,2020-04-22 02:09:02.386
+Get event by id,2020-04-22 02:09:02.396
+Get client by id,2020-04-22 02:09:02.397
+Get eventRepository,2020-04-22 02:09:10.9
+Get ticketDetailsRepository,2020-04-22 02:09:10.93
+Get sold tickets,2020-04-22 02:09:25.982
+Add ticket,2020-04-22 02:09:30.169
+Update final price of ticket,2020-04-22 02:09:30.172
+Get ticket details by id,2020-04-22 02:09:30.173
+Get event by id,2020-04-22 02:09:30.178
+Get client by id,2020-04-22 02:09:30.179
+Get sold tickets,2020-04-22 02:09:32.839
+Get eventRepository,2020-04-22 02:10:57.291
+Get ticketDetailsRepository,2020-04-22 02:10:57.322
+Get sold tickets,2020-04-22 02:11:02.829
+Add ticket,2020-04-22 02:11:08.643
+Update final price of ticket,2020-04-22 02:11:08.644
+Get eventRepository,2020-04-22 02:11:24.888
+Get ticketDetailsRepository,2020-04-22 02:11:24.92
+Get all clients,2020-04-22 02:11:29.326
+Get all the events,2020-04-22 02:11:36.998
+Get ticket details,2020-04-22 02:11:43.984
+Add ticket,2020-04-22 02:11:55.452
+Update final price of ticket,2020-04-22 02:11:55.453
+Get eventRepository,2020-04-22 02:12:58.103
+Get ticketDetailsRepository,2020-04-22 02:12:58.133
+Add ticket,2020-04-22 02:13:07.984
+Update final price of ticket,2020-04-22 02:13:07.986
+Get ticket details by id,2020-04-22 02:13:07.987
+Get event by id,2020-04-22 02:13:07.997
+Get client by id,2020-04-22 02:13:07.998
+Get sold tickets,2020-04-22 02:13:09.498
+Get eventRepository,2020-04-22 02:13:18.106
+Get ticketDetailsRepository,2020-04-22 02:13:18.139
+Get sold tickets,2020-04-22 02:13:32.259
+Add ticket,2020-04-22 02:13:36.801
+Update final price of ticket,2020-04-22 02:13:36.802
+Get ticket details by id,2020-04-22 02:13:36.803
+Get event by id,2020-04-22 02:13:36.809
+Get client by id,2020-04-22 02:13:36.81
+Get sold tickets,2020-04-22 02:13:39.526
+Get locations,2020-04-22 02:15:24.439
+Find location by city,2020-04-22 02:15:33.274
+Find location by city,2020-04-22 02:15:42.83
+Get location by id,2020-04-22 02:15:50.045
+Get location by id,2020-04-22 02:15:56.567
+Update location venue,2020-04-22 02:16:16.691
+Get locations,2020-04-22 02:16:18.455
+Get ticket details,2020-04-22 02:16:38.241
+Get sold tickets,2020-04-22 02:16:54.438
+Add ticket,2020-04-22 02:17:10.297
+Update final price of ticket,2020-04-22 02:17:10.298
+Get ticket details by id,2020-04-22 02:17:10.3
+Get event by id,2020-04-22 02:17:10.301
+Get client by id,2020-04-22 02:17:10.303
+Find ticket by client id,2020-04-22 02:17:25.781
+Get eventRepository,2020-04-22 02:20:00.636
+Get ticketDetailsRepository,2020-04-22 02:20:00.665
+Get ticket details,2020-04-22 02:20:07.755
+Add ticket,2020-04-22 02:20:29.863
+Update final price of ticket,2020-04-22 02:20:29.865
+Get ticket details by id,2020-04-22 02:20:29.866
+Get event by id,2020-04-22 02:20:29.872
+Get client by id,2020-04-22 02:20:29.873
+Add ticket,2020-04-22 02:20:35.182
+Update final price of ticket,2020-04-22 02:20:35.184
+Get ticket details by id,2020-04-22 02:20:35.185
+Get event by id,2020-04-22 02:20:35.186
+Get client by id,2020-04-22 02:20:35.188
+Add ticket,2020-04-22 02:20:42.372
+Update final price of ticket,2020-04-22 02:20:42.374
+Get ticket details by id,2020-04-22 02:20:42.375
+Get event by id,2020-04-22 02:20:42.377
+Get client by id,2020-04-22 02:20:42.377
+Get sold tickets,2020-04-22 02:20:45.78
+Add ticket,2020-04-22 02:21:02.456
+Update final price of ticket,2020-04-22 02:21:02.457
+Get ticket details by id,2020-04-22 02:21:02.458
+Get event by id,2020-04-22 02:21:02.459
+Get client by id,2020-04-22 02:21:02.461
+Find ticket by client id,2020-04-22 02:21:06.968
+Get ticket by id,2020-04-22 02:21:15.239
+Update ticket details id,2020-04-22 02:21:41.624
+Remove ticket by id,2020-04-22 02:21:54.739
+Get sold tickets,2020-04-22 02:21:59.044
+Add ticket,2020-04-22 02:22:12.867
+Update final price of ticket,2020-04-22 02:22:12.868
+Get ticket details by id,2020-04-22 02:22:12.87
+Get event by id,2020-04-22 02:22:12.871
+Get client by id,2020-04-22 02:22:12.872
+Add ticket,2020-04-22 02:22:18.636
+Update final price of ticket,2020-04-22 02:22:18.638
+Get ticket details by id,2020-04-22 02:22:18.638
+Get event by id,2020-04-22 02:22:18.639
+Get client by id,2020-04-22 02:22:18.64
+Remove location by id,2020-04-22 02:22:32.049
+Get ticket details by id of location,2020-04-22 02:22:32.051
+Remove ticket by ticket details id,2020-04-22 02:22:32.052
+Remove ticket by ticket details id,2020-04-22 02:22:32.054
+Remove ticket details by location id,2020-04-22 02:22:32.055
+Remove ticket by ticket details id,2020-04-22 02:22:32.056
+Remove ticket by ticket details id,2020-04-22 02:22:32.058
+Get locations,2020-04-22 02:22:34.166
+Get eventRepository,2020-04-22 02:23:58.6
+Get ticketDetailsRepository,2020-04-22 02:23:58.641
+Remove location by id,2020-04-22 02:24:05.35
+Get ticket details by id of location,2020-04-22 02:24:05.351
+Remove ticket details by location id,2020-04-22 02:24:05.353
+Get locations,2020-04-22 02:24:06.278
+Get ticket details,2020-04-22 02:24:15.17
+Get sold tickets,2020-04-22 02:24:27.742
+Get ticket details,2020-04-22 02:24:48.738
+Remove ticket details by id,2020-04-22 02:25:44.538
+Remove ticket by ticket details id,2020-04-22 02:25:44.54
+Get ticket details,2020-04-22 02:25:47.278
+Get sold tickets,2020-04-22 02:25:53.634
+Get sold tickets,2020-04-22 02:28:45.055
+Get ticket details,2020-04-22 02:28:55.018
+Get ticket details,2020-04-22 02:29:32.51
+Add ticket details,2020-04-22 02:29:47.327
+Get locations,2020-04-22 02:29:55.38
+Get eventRepository,2020-04-22 10:47:19.229
+Get ticketDetailsRepository,2020-04-22 10:47:19.289
+Get ticket details,2020-04-22 10:48:42.705
+Get all the events,2020-04-22 10:48:56.314
+Add ticket details,2020-04-22 10:49:15.594
+Add ticket details,2020-04-22 10:49:28.499
+Add ticket details,2020-04-22 10:49:44.564
+Add ticket details,2020-04-22 10:50:09.076
+Get ticket details,2020-04-22 10:50:11.406
+Get sold tickets,2020-04-22 10:50:43.436
+Get all clients,2020-04-22 10:51:01.255
+Add ticket,2020-04-22 10:51:50.018
+Update final price of ticket,2020-04-22 10:51:50.02
+Get ticket details by id,2020-04-22 10:51:50.021
+Get event by id,2020-04-22 10:51:50.029
+Get client by id,2020-04-22 10:51:50.03
+Add ticket,2020-04-22 10:52:00.019
+Update final price of ticket,2020-04-22 10:52:00.02
+Get ticket details by id,2020-04-22 10:52:00.022
+Get event by id,2020-04-22 10:52:00.023
+Get client by id,2020-04-22 10:52:00.024
+Add ticket,2020-04-22 10:52:08.308
+Update final price of ticket,2020-04-22 10:52:08.309
+Get ticket details by id,2020-04-22 10:52:08.311
+Get event by id,2020-04-22 10:52:08.313
+Get client by id,2020-04-22 10:52:08.314
+Get sold tickets,2020-04-22 10:52:09.672
+Get ticket details,2020-04-22 10:52:33.475
+Get locations,2020-04-22 10:52:46.608
+Remove location by id,2020-04-22 10:52:50.777
+Get ticket details by id of location,2020-04-22 10:52:50.778
+Remove ticket by ticket details id,2020-04-22 10:52:50.78
+Remove ticket by ticket details id,2020-04-22 10:52:50.783
+Remove ticket details by location id,2020-04-22 10:52:50.785
+Remove ticket by ticket details id,2020-04-22 10:52:50.787
+Remove ticket by ticket details id,2020-04-22 10:52:50.789
+Get locations,2020-04-22 10:52:54.166
+Get ticket details,2020-04-22 10:53:02.357
+Get sold tickets,2020-04-22 10:53:30.901
+Get locations,2020-04-22 10:55:05.915
+Get ticket details,2020-04-22 10:55:17.035
+Add ticket details,2020-04-22 10:55:36.926
+Get all clients,2020-04-22 10:56:12.105
+Add ticket,2020-04-22 10:56:31.794
+Update final price of ticket,2020-04-22 10:56:31.796
+Get ticket details by id,2020-04-22 10:56:31.797
+Get event by id,2020-04-22 10:56:31.798
+Get client by id,2020-04-22 10:56:31.8
+Add ticket,2020-04-22 10:56:35.416
+Update final price of ticket,2020-04-22 10:56:35.417
+Get ticket details by id,2020-04-22 10:56:35.419
+Get event by id,2020-04-22 10:56:35.42
+Get client by id,2020-04-22 10:56:35.422
+Add ticket,2020-04-22 10:56:44.209
+Update final price of ticket,2020-04-22 10:56:44.211
+Get ticket details by id,2020-04-22 10:56:44.213
+Get event by id,2020-04-22 10:56:44.214
+Get client by id,2020-04-22 10:56:44.216
+Get sold tickets,2020-04-22 10:56:47.478
+Add ticket,2020-04-22 10:57:21.804
+Update final price of ticket,2020-04-22 10:57:21.806
+Get ticket details by id,2020-04-22 10:57:21.807
+Get event by id,2020-04-22 10:57:21.809
+Get client by id,2020-04-22 10:57:21.81
+Add ticket,2020-04-22 10:57:26.472
+Update final price of ticket,2020-04-22 10:57:26.474
+Get ticket details by id,2020-04-22 10:57:26.475
+Get event by id,2020-04-22 10:57:26.477
+Get client by id,2020-04-22 10:57:26.479
+Add ticket,2020-04-22 10:57:32.136
+Update final price of ticket,2020-04-22 10:57:32.138
+Get ticket details by id,2020-04-22 10:57:32.14
+Get event by id,2020-04-22 10:57:32.142
+Get client by id,2020-04-22 10:57:32.143
+Get sold tickets,2020-04-22 10:57:37.089
+Remove client by id,2020-04-22 10:58:01.667
+Remove ticket by client id,2020-04-22 10:58:01.668
+Get all clients,2020-04-22 10:58:03.644
+Get sold tickets,2020-04-22 10:58:11.412
+Get eventRepository,2020-04-22 10:58:53.838
+Get ticketDetailsRepository,2020-04-22 10:58:53.872
+Get sold tickets,2020-04-22 10:59:01.594
+Add ticket,2020-04-22 11:01:30.481
+Update final price of ticket,2020-04-22 11:01:30.483
+Get ticket details by id,2020-04-22 11:01:30.485
+Get event by id,2020-04-22 11:01:30.5
+Get client by id,2020-04-22 11:01:30.502
+Get sold tickets,2020-04-22 11:01:31.992
+Get eventRepository,2020-04-22 11:01:51.372
+Get ticketDetailsRepository,2020-04-22 11:01:51.404
+Get sold tickets,2020-04-22 11:01:59.83
+Get eventRepository,2020-04-22 11:11:19.09
+Get ticketDetailsRepository,2020-04-22 11:11:19.125
+Add ticket details,2020-04-22 11:11:38.868
+Get event by id,2020-04-22 11:11:38.87
+Add ticket details,2020-04-22 11:12:12.323
+Get event by id,2020-04-22 11:12:12.324
+Get location by id,2020-04-22 11:12:12.325
+Add ticket details,2020-04-22 11:12:30.87
+Get event by id,2020-04-22 11:12:30.872
+Get location by id,2020-04-22 11:12:30.873
+Get ticket details,2020-04-22 11:12:34.141
+Add ticket details,2020-04-22 11:13:17.564
+Get event by id,2020-04-22 11:13:17.565
+Get location by id,2020-04-22 11:13:17.567
+Get ticket details,2020-04-22 11:13:18.934
+Add ticket details,2020-04-22 11:13:26.971
+Get event by id,2020-04-22 11:13:26.973
+Add ticket details,2020-04-22 11:13:40.041
+Get event by id,2020-04-22 11:13:40.043
+Get location by id,2020-04-22 11:13:40.044
+Get ticket details,2020-04-22 11:13:41.935
+Get eventRepository,2020-04-22 11:22:51.744
+Get ticketDetailsRepository,2020-04-22 11:22:51.786
+Get ticket details,2020-04-22 11:22:56.158
+Add ticket details,2020-04-22 11:23:07.581
+Get event by id,2020-04-22 11:23:07.583
+Get location by id,2020-04-22 11:23:07.584
+Add ticket details,2020-04-22 11:23:17.711
+Get event by id,2020-04-22 11:23:17.713
+Get location by id,2020-04-22 11:23:17.714
+Add ticket details,2020-04-22 11:23:29.168
+Get event by id,2020-04-22 11:23:29.17
+Get location by id,2020-04-22 11:23:29.172
+Get ticket details,2020-04-22 11:23:30.817
+Get eventRepository,2020-04-22 11:29:58.987
+Get ticketDetailsRepository,2020-04-22 11:29:59.03
+Get all the events,2020-04-22 11:30:03.399
+Update name of an event given by id,2020-04-22 11:30:13.414
+Get ticket details,2020-04-22 11:30:38.182
+Update ticket details hour,2020-04-22 11:30:52.263
+Update ticket details hour,2020-04-22 11:31:41.612
+Get ticket details,2020-04-22 11:31:43.912
+Get eventRepository,2020-04-22 11:36:03.134
+Get ticketDetailsRepository,2020-04-22 11:36:03.166
+Get all the events,2020-04-22 11:36:10.235
+Update name of an event given by id,2020-04-22 11:36:16.257
+Get all the events,2020-04-22 11:36:19.096
+Get eventRepository,2020-04-22 12:18:07.384
+Get ticketDetailsRepository,2020-04-22 12:18:07.423
+Get sold tickets,2020-04-22 12:18:10.339
+Add ticket,2020-04-22 12:18:24.152
+Get ticket details by id,2020-04-22 12:18:24.154
+Add ticket,2020-04-22 12:18:46.031
+Get ticket details by id,2020-04-22 12:18:46.033
+Get client by id,2020-04-22 12:18:46.034
+Update final price of ticket,2020-04-22 12:18:46.037
+Get ticket details by id,2020-04-22 12:18:46.038
+Get event by id,2020-04-22 12:18:46.058
+Get client by id,2020-04-22 12:18:46.059
+Add ticket,2020-04-22 12:18:51.351
+Get ticket details by id,2020-04-22 12:18:51.352
+Get client by id,2020-04-22 12:18:51.354
+Update final price of ticket,2020-04-22 12:18:51.356
+Get ticket details by id,2020-04-22 12:18:51.358
+Get event by id,2020-04-22 12:18:51.359
+Get client by id,2020-04-22 12:18:51.361
+Add ticket,2020-04-22 12:18:58.712
+Get ticket details by id,2020-04-22 12:18:58.714
+Get client by id,2020-04-22 12:18:58.715
+Update final price of ticket,2020-04-22 12:18:58.716
+Get ticket details by id,2020-04-22 12:18:58.718
+Get event by id,2020-04-22 12:18:58.719
+Get client by id,2020-04-22 12:18:58.721
+Add ticket,2020-04-22 12:19:02.362
+Get ticket details by id,2020-04-22 12:19:02.363
+Get client by id,2020-04-22 12:19:02.365
+Update final price of ticket,2020-04-22 12:19:02.366
+Get ticket details by id,2020-04-22 12:19:02.368
+Get event by id,2020-04-22 12:19:02.369
+Get client by id,2020-04-22 12:19:02.371
+Add ticket,2020-04-22 12:19:07.364
+Get ticket details by id,2020-04-22 12:19:07.365
+Get client by id,2020-04-22 12:19:07.366
+Update final price of ticket,2020-04-22 12:19:07.367
+Get ticket details by id,2020-04-22 12:19:07.367
+Get event by id,2020-04-22 12:19:07.368
+Get client by id,2020-04-22 12:19:07.369
+Add ticket,2020-04-22 12:19:14.854
+Get ticket details by id,2020-04-22 12:19:14.856
+Get client by id,2020-04-22 12:19:14.857
+Update final price of ticket,2020-04-22 12:19:14.859
+Get ticket details by id,2020-04-22 12:19:14.861
+Get event by id,2020-04-22 12:19:14.862
+Get client by id,2020-04-22 12:19:14.863
+Get all clients,2020-04-22 12:19:20.069
+Remove client by id,2020-04-22 12:19:31.232
+Get eventRepository,2020-04-22 20:15:48.476
+Get ticketDetailsRepository,2020-04-22 20:15:48.507
+Get all clients,2020-04-22 20:15:51.441
+Remove client by id,2020-04-22 20:17:16.168
+Remove ticket by client id,2020-04-22 20:17:16.168
+Get all clients,2020-04-22 20:17:20.518
+Get sold tickets,2020-04-22 20:17:31.372
+Get eventRepository,2020-04-22 20:24:54.311
+Get ticketDetailsRepository,2020-04-22 20:24:54.342
+Get sold tickets,2020-04-22 20:25:00.951
+Get eventRepository,2020-04-22 20:25:54.601
+Get ticketDetailsRepository,2020-04-22 20:25:54.633
+Get ticket details,2020-04-22 20:26:05.754
+Get sold tickets,2020-04-22 20:26:21.09
+Add ticket,2020-04-22 20:26:31.617
+Get ticket details by id,2020-04-22 20:26:31.617
+Get client by id,2020-04-22 20:26:31.617
+Update final price of ticket,2020-04-22 20:26:31.617
+Get ticket details by id,2020-04-22 20:26:31.617
+Get event by id,2020-04-22 20:26:31.633
+Get client by id,2020-04-22 20:26:31.633
+Add ticket,2020-04-22 20:26:39.867
+Get ticket details by id,2020-04-22 20:26:39.867
+Get client by id,2020-04-22 20:26:39.867
+Update final price of ticket,2020-04-22 20:26:39.867
+Get ticket details by id,2020-04-22 20:26:39.867
+Get event by id,2020-04-22 20:26:39.867
+Get client by id,2020-04-22 20:26:39.867
+Add ticket,2020-04-22 20:26:45.887
+Get ticket details by id,2020-04-22 20:26:45.887
+Get client by id,2020-04-22 20:26:45.887
+Update final price of ticket,2020-04-22 20:26:45.887
+Get ticket details by id,2020-04-22 20:26:45.887
+Get event by id,2020-04-22 20:26:45.902
+Get client by id,2020-04-22 20:26:45.902
+Add ticket,2020-04-22 20:26:51.484
+Get ticket details by id,2020-04-22 20:26:51.5
+Get client by id,2020-04-22 20:26:51.5
+Update final price of ticket,2020-04-22 20:26:51.5
+Get ticket details by id,2020-04-22 20:26:51.503
+Get event by id,2020-04-22 20:26:51.503
+Get client by id,2020-04-22 20:26:51.503
+Get all clients,2020-04-22 20:26:58.394
+Remove client by id,2020-04-22 20:27:02.131
+Remove ticket by client id,2020-04-22 20:27:02.131
+Get all clients,2020-04-22 20:27:03.935
+Get sold tickets,2020-04-22 20:27:13.578
+Get all clients,2020-04-22 20:34:07.797
+Add client,2020-04-22 20:34:48.62
+Add client,2020-04-22 20:35:17.258
+Add client,2020-04-22 20:36:03.284
+Get all clients,2020-04-22 20:36:05.266
+Get sold tickets,2020-04-22 20:47:19.979
+Add ticket,2020-04-22 20:47:27.461
+Get ticket details by id,2020-04-22 20:47:27.461
+Get client by id,2020-04-22 20:47:27.461
+Update final price of ticket,2020-04-22 20:47:27.461
+Get ticket details by id,2020-04-22 20:47:27.461
+Get event by id,2020-04-22 20:47:27.461
+Get client by id,2020-04-22 20:47:27.461
+Add ticket,2020-04-22 20:47:34.958
+Get ticket details by id,2020-04-22 20:47:34.958
+Get client by id,2020-04-22 20:47:34.958
+Update final price of ticket,2020-04-22 20:47:34.958
+Get ticket details by id,2020-04-22 20:47:34.958
+Get event by id,2020-04-22 20:47:34.958
+Get client by id,2020-04-22 20:47:34.958
+Add ticket,2020-04-22 20:47:37.664
+Get ticket details by id,2020-04-22 20:47:37.664
+Get client by id,2020-04-22 20:47:37.664
+Update final price of ticket,2020-04-22 20:47:37.664
+Get ticket details by id,2020-04-22 20:47:37.664
+Get event by id,2020-04-22 20:47:37.664
+Get client by id,2020-04-22 20:47:37.664
+Add ticket,2020-04-22 20:47:43.647
+Get ticket details by id,2020-04-22 20:47:43.647
+Get client by id,2020-04-22 20:47:43.663
+Update final price of ticket,2020-04-22 20:47:43.663
+Get ticket details by id,2020-04-22 20:47:43.663
+Get event by id,2020-04-22 20:47:43.663
+Get client by id,2020-04-22 20:47:43.663
+Add ticket,2020-04-22 20:47:47.559
+Get ticket details by id,2020-04-22 20:47:47.559
+Get client by id,2020-04-22 20:47:47.559
+Update final price of ticket,2020-04-22 20:47:47.559
+Get ticket details by id,2020-04-22 20:47:47.559
+Get event by id,2020-04-22 20:47:47.559
+Get client by id,2020-04-22 20:47:47.559
+Get sold tickets,2020-04-22 20:47:54.431
+Remove client by id,2020-04-22 20:48:28.04
+Remove ticket by client id,2020-04-22 20:48:28.04
+Add client,2020-04-22 20:48:55.752
+Get all clients,2020-04-22 20:48:57.999
+Get sold tickets,2020-04-22 20:49:10.246
+Get eventRepository,2020-04-23 01:42:50.884
+Get ticketDetailsRepository,2020-04-23 01:42:50.915
+Get all the events,2020-04-23 01:43:05.983
+Get ticket details,2020-04-23 01:43:18.713
+Get sold tickets,2020-04-23 01:43:26.995
+Get locations,2020-04-23 01:43:31.663

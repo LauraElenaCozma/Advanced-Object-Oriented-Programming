@@ -25,7 +25,7 @@ public class EventRepository {
 
     public void removeEventById(int id){
         //remove Event with a given id
-        int index = 0;
+        int index = -1;
         for(int i = 0 ; i < events.size() ; i++){
             if(events.get(i).getIdEvent() == id) {
                 index = i;
@@ -33,7 +33,7 @@ public class EventRepository {
             }
         }
 
-        if(index == 0) {
+        if(index == -1) {
             System.out.println("There is no event with this id");
         }
         else {
@@ -60,15 +60,6 @@ public class EventRepository {
     }
 
     //update
-    public void updateNameEvent(String name, String newName) {
-        //update the name of some events
-        for(int i = 0 ; i < events.size() ; i++) {
-            if(events.get(i).getName().equals(name) == true) {
-                events.get(i).setName(newName);
-            }
-        }
-    }
-
     public void updateNameEvent(int id, String newName) {
         //update the name of the event that has id = id
         for(int i = 0 ; i < events.size() ; i++) {

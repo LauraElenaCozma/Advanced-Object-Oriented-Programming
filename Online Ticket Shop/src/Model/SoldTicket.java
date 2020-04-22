@@ -4,17 +4,33 @@ public class SoldTicket {
     //Sold tickets are here. It has the ticket with details and the client
     private static int uniqueKey = 1;
     private int idTicket;
-    private Client client;
-    private TicketDetails event;
+    private int idClient;
+    private int idTicketDetails;
+    private double priceAfterDiscount;
 
     public SoldTicket() {
     }
 
-    public SoldTicket(Client client, TicketDetails event) {
+    public SoldTicket(int idClient, int idTicketDetails) {
         this.idTicket = uniqueKey;
         uniqueKey++;
-        this.client = client;
-        this.event = event;
+        this.idClient = idClient;
+        this.idTicketDetails = idTicketDetails;
+    }
+
+    public SoldTicket(int idTicket, int idClient, int idTicketDetails, double priceAfterDiscount) {
+        this.idTicket = idTicket;
+        this.idClient = idClient;
+        this.idTicketDetails = idTicketDetails;
+        this.priceAfterDiscount = priceAfterDiscount;
+    }
+
+    public static int getUniqueKey() {
+        return uniqueKey;
+    }
+
+    public static void setUniqueKey(int uniqueKey) {
+        SoldTicket.uniqueKey = uniqueKey;
     }
 
     public int getIdTicket() {
@@ -27,36 +43,37 @@ public class SoldTicket {
         this.idTicket = idTicket;
     }
 
-    public Client getClient() {
-        return client;
+    public int getIdClient() {
+        return idClient;
     }
 
-    public void setClient(Client client) {
-
-        this.client = client;
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
 
-    public TicketDetails getEvent() {
-
-        return event;
+    public int getIdTicketDetails() {
+        return idTicketDetails;
     }
 
-    public void setEvent(TicketDetails event) {
-        this.event = event;
+    public void setIdTicketDetails(int idTicketDetails) {
+        this.idTicketDetails = idTicketDetails;
     }
 
-    public double finalPriceTicket() {
-        double price = event.getEvent().getPrice();
-        return price * (1 - client.computeDiscount());
+    public double getPriceAfterDiscount() {
+        return priceAfterDiscount;
+    }
+
+    public void setPriceAfterDiscount(double priceAfterDiscount) {
+        this.priceAfterDiscount = priceAfterDiscount;
     }
 
     @Override
     public String toString() {
         return "SoldTicket{" +
                 "idTicket=" + idTicket +
-                ", " + client +
-                ", " + event +
-                ", Price with discount=" + finalPriceTicket() +
+                ", idClient=" + idClient +
+                ", idTicketDetails=" + idTicketDetails +
+                ", Price after discount=" + priceAfterDiscount +
                 "}\n";
     }
 
@@ -71,6 +88,6 @@ public class SoldTicket {
         SoldTicket t = (SoldTicket) o;
 
         // Compare the data members and return accordingly
-        return idTicket == t.getIdTicket() && client.equals(t.getClient()) && event.equals(t.getEvent());
+        return idTicket == t.getIdTicket() && idClient == t.getIdClient() && idTicketDetails == t.getIdTicketDetails() && priceAfterDiscount == t.getPriceAfterDiscount();
     }
 }

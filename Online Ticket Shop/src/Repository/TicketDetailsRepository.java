@@ -8,7 +8,7 @@ import Model.TicketDetails;
 import java.util.ArrayList;
 
 public class TicketDetailsRepository {
-    ArrayList<TicketDetails> tickets;
+    private ArrayList<TicketDetails> tickets;
 
     public TicketDetailsRepository() {
 
@@ -28,7 +28,7 @@ public class TicketDetailsRepository {
     //remove
     public void removeTicketById(int id){
         //remove Ticket with a given id
-        int index = 0;
+        int index = -1;
         for(int i = 0 ; i < tickets.size() ; i++){
             if(tickets.get(i).getIdTicket() == id) {
                 index = i;
@@ -36,7 +36,7 @@ public class TicketDetailsRepository {
             }
         }
 
-        if(index == 0) {
+        if(index == -1) {
             System.out.println("There is no ticket with this id");
         }
         else {
@@ -44,20 +44,10 @@ public class TicketDetailsRepository {
         }
     }
 
-    public void removeTicketByEvent(Event event){
-        //remove ticket with a given event
-        for(int i = 0 ; i < tickets.size() ; i++){
-            if(tickets.get(i).getEvent().equals(event) == true) {
-                tickets.remove(i);
-                i--;
-            }
-        }
-    }
-
     public void removeTicketDetailsByEventId(int id) {
         //search for the ticket having id event = id and removes it
         for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getEvent().getIdEvent() == id) {
+            if(tickets.get(i).getIdEvent() == id) {
                 tickets.remove(i);
                 i--;
             }
@@ -67,7 +57,7 @@ public class TicketDetailsRepository {
     public void removeTicketByLocationId(int id){
         //remove ticket with a given location
         for(int i = 0 ; i < tickets.size() ; i++){
-            if(tickets.get(i).getLocation().getIdLocation() == id) {
+            if(tickets.get(i).getIdLocation() == id) {
                 tickets.remove(i);
                 i--;
             }
@@ -75,28 +65,6 @@ public class TicketDetailsRepository {
     }
 
     //find
-    public ArrayList<TicketDetails> findTicketByEvent(Event e) {
-
-        ArrayList<TicketDetails> indexes = new ArrayList<>();
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getEvent().equals(e) == true) {
-                indexes.add(tickets.get(i));
-            }
-        }
-        return indexes;
-    }
-
-    public ArrayList<TicketDetails> findTicketByLocation(Location loc) {
-
-        ArrayList<TicketDetails> indexes = new ArrayList<>();
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getLocation().equals(loc) == true) {
-                indexes.add(tickets.get(i));
-            }
-        }
-        return indexes;
-    }
-
     public ArrayList<TicketDetails> findTicketByDate(Date d) {
 
         ArrayList<TicketDetails> indexes = new ArrayList<>();
@@ -108,38 +76,43 @@ public class TicketDetailsRepository {
         return indexes;
     }
 
+    public ArrayList<TicketDetails> findTicketByIdEvent(int id) {
+        ArrayList<TicketDetails> indexes = new ArrayList<>();
+        for(int i = 0 ; i < tickets.size() ; i++) {
+            if(tickets.get(i).getIdEvent() == id) {
+                indexes.add(tickets.get(i));
+            }
+        }
+        return indexes;
+    }
+
+    public ArrayList<TicketDetails> findTicketByIdLocation(int id) {
+        ArrayList<TicketDetails> indexes = new ArrayList<>();
+        for(int i = 0 ; i < tickets.size() ; i++) {
+            if(tickets.get(i).getIdLocation() == id) {
+                indexes.add(tickets.get(i));
+            }
+        }
+        return indexes;
+    }
+
     //update
 
-    public void updateTicketDetailsEvent(Event event, Event newEvent) {
-        //update the events of some tickets
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getEvent().equals(event) == true) {
-                tickets.get(i).setEvent(newEvent);
-            }
-        }
-    }
-
-    public void updateTicketDetailsEvent(int id, Event newEvent) {
+    public void updateTicketDetailsEvent(int id, int newId) {
         //update the events of some tickets
         for(int i = 0 ; i < tickets.size() ; i++) {
             if(tickets.get(i).getIdTicket() == id) {
-                tickets.get(i).setEvent(newEvent);
+                tickets.get(i).setIdEvent(newId);
             }
         }
     }
 
-    public void updateTicketDetailsLocation(Location loc, Location newLoc) {
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getLocation().equals(loc) == true) {
-                tickets.get(i).setLocation(newLoc);
-            }
-        }
-    }
 
-    public void updateTicketDetailsLocation(int id, Location newLoc) {
+    public void updateTicketDetailsLocation(int id, int newIdLocation) {
+        //updates the ticket with id = id with a new location
         for(int i = 0 ; i < tickets.size() ; i++) {
             if(tickets.get(i).getIdTicket() == id) {
-                tickets.get(i).setLocation(newLoc);
+                tickets.get(i).setIdLocation(newIdLocation);
             }
         }
     }
@@ -181,6 +154,16 @@ public class TicketDetailsRepository {
             }
         }
         return null;
+    }
+
+    public ArrayList<TicketDetails> getTicketDetailsByIdLocation(int id) {
+        ArrayList<TicketDetails> indexes = new ArrayList<>();
+        for(int i = 0 ; i < tickets.size() ; i++) {
+            if(tickets.get(i).getIdLocation() == id) {
+                indexes.add(tickets.get(i));
+            }
+        }
+        return indexes;
     }
 
 }

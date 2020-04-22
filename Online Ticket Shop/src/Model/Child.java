@@ -13,6 +13,11 @@ public class Child extends Client{
         this.age = age;
     }
 
+    public Child(int idClient, String name, String email, String phoneNumber, int age) {
+        super(idClient, name, email, phoneNumber);
+        this.age = age;
+    }
+
     public int getAge() {
         return age;
     }

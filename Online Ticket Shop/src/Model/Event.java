@@ -1,6 +1,7 @@
 package Model;
 
-import java.util.Arrays;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 public class Event {
     static private int uniqueId = 1;
@@ -8,7 +9,6 @@ public class Event {
     private String name;
     private int duration; //duration of play
     private double price;
-
 
     public Event() {
 
@@ -23,7 +23,20 @@ public class Event {
         this.duration = duration;
         this.price = price;
     }
+    public Event(int idEvent, String name, int duration, double price) {
+        this.idEvent = idEvent;
+        this.name = name;
+        this.duration = duration;
+        this.price = price;
+    }
 
+    public static void setUniqueId(int noElem) {
+        uniqueId = noElem;
+    }
+
+    public static int getUniqueId() {
+        return uniqueId;
+    }
     public double getPrice() {
 
         return price;
@@ -72,7 +85,16 @@ public class Event {
                 ", name='" + name + '\'' +
                 ", duration=" + duration +
                 ", price=" + price +
-                "}";
+                "}\n";
+    }
+
+    public void print(BufferedWriter out) throws IOException {
+        out.write(this.getIdEvent() + "," + this.getName() + "," + this.getDuration() + "," + this.getPrice());
+    }
+
+    public Event read(String line) throws  IOException{
+        String[] data = line.split(",");
+        return new Event(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]));
     }
 
     @Override

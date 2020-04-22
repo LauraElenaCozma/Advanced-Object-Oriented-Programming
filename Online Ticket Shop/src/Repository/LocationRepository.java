@@ -5,7 +5,7 @@ import Model.Location;
 import java.util.ArrayList;
 
 public class LocationRepository {
-    ArrayList<Location> locations;
+    private ArrayList<Location> locations;
 
     public LocationRepository() {
 
@@ -25,7 +25,7 @@ public class LocationRepository {
     //remove
     public void removeLocationById(int id){
         //remove location with a given id
-        int index = 0;
+        int index = -1;
         for(int i = 0 ; i < locations.size() ; i++){
             if(locations.get(i).getIdLocation() == id) {
                 index = i;
@@ -33,7 +33,7 @@ public class LocationRepository {
             }
         }
 
-        if(index == 0) {
+        if(index == -1) {
             System.out.println("There is no location with this id");
         }
         else {

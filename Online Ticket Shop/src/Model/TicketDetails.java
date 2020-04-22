@@ -4,8 +4,8 @@ public class TicketDetails {
     //keeps some events and their specific details, such as date, location etc. These are the tickets that can be sold
     private static int uniqueKey = 1;
     private int idTicket;
-    private Event event;
-    private Location loc;
+    private int idEvent;
+    private int idLocation;
     private Date date;
     private String hour;
 
@@ -14,31 +14,45 @@ public class TicketDetails {
         uniqueKey++;
     }
 
-    public TicketDetails(Event event, Location loc, Date date, String hour) {
+    public TicketDetails(int idEvent, int idLocation, Date date, String hour) {
         this.idTicket = uniqueKey;
         uniqueKey++;
-        this.event = event;
-        this.loc = loc;
+        this.idEvent = idEvent;
+        this.idLocation = idLocation;
         this.date = date;
         this.hour = hour;
     }
 
-    public Event getEvent() {
-        return event;
+    public TicketDetails(int idTicket, int idEvent, int idLocation, Date date, String hour) {
+        this.idTicket = idTicket;
+        this.idEvent = idEvent;
+        this.idLocation = idLocation;
+        this.date = date;
+        this.hour = hour;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public static int getUniqueKey() {
+        return uniqueKey;
     }
 
-    public Location getLocation() {
-
-        return loc;
+    public static void setUniqueKey(int uniqueKey) {
+        TicketDetails.uniqueKey = uniqueKey;
     }
 
-    public void setLocation(Location loc) {
+    public int getIdEvent() {
+        return idEvent;
+    }
 
-        this.loc = loc;
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
+    public int getIdLocation() {
+        return idLocation;
+    }
+
+    public void setIdLocation(int idLocation) {
+        this.idLocation = idLocation;
     }
 
     public Date getDate() {
@@ -70,11 +84,11 @@ public class TicketDetails {
     public String toString() {
         return "TicketDetails{" +
                 "idTicket=" + idTicket +
-                ", " + event +
-                ", " + loc +
+                ", idEvent=" + idEvent +
+                ", idLocation=" + idLocation +
                 ", " + date +
                 ", hour='" + hour + '\'' +
-                "}";
+                "}\n";
     }
 
     @Override
@@ -88,7 +102,7 @@ public class TicketDetails {
         TicketDetails t = (TicketDetails) o;
 
         // Compare the data members and return accordingly
-        return idTicket == t.getIdTicket() && event.equals(t.getEvent()) && loc.equals(t.getLocation())
+        return idTicket == t.getIdTicket() && idEvent == t.getIdEvent() && idLocation == t.getIdLocation()
                 && date.equals(t.getDate()) && hour.equals(t.getHour());
     }
 }

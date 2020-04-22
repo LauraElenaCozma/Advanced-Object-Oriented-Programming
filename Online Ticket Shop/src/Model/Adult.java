@@ -10,6 +10,11 @@ public class Adult extends Client {
         super(name, email, phoneNumber);
     }
 
+    public Adult(int idClient, String name, String email, String phoneNumber) {
+
+        super(idClient, name, email, phoneNumber);
+    }
+
     @Override
     public double computeDiscount() {
         //there is no discount

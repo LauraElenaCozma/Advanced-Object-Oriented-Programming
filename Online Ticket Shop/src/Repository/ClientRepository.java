@@ -3,20 +3,17 @@ package Repository;
 import Model.Client;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.Vector;
 
 public class ClientRepository{
     //repo for client
-    ArrayList<Client> clients;
+    private Set<Client> clients;
 
     public ClientRepository() {
 
-        clients = new ArrayList<>();
-    }
-
-    public ClientRepository(ArrayList<Client> clients) {
-
-        this.clients = new ArrayList<>(clients);
+        clients = new TreeSet<>(new ComparatorClients());
     }
 
     public void addClient(Client c){
@@ -27,21 +24,24 @@ public class ClientRepository{
     //remove
     public void removeClientById(int id) {
         //remove a client by id
-        for(int i = 0 ; i < clients.size() ; i++) {
-            if(clients.get(i).getIdClient() == id) {
-                clients.remove(i);
-                i--;
+        for(Client c : clients) {
+            if(c.getIdClient() == id) {
+                clients.remove(c);
+                break;
             }
         }
     }
 
     public void removeClientByName(String name) {
         //remove a client by name
-        for(int i = 0 ; i < clients.size() ; i++) {
-            if(clients.get(i).getName().equals(name) == true) {
-                clients.remove(i);
-                i--;
+        Set<Client> cl = new TreeSet<>(new ComparatorClients());
+        for(Client c : clients) {
+            if(c.getName().equals(name) == true) {
+                cl.add(c);
             }
+        }
+        for(Client c : cl) {
+            clients.remove(c);
         }
     }
 
@@ -95,7 +95,7 @@ public class ClientRepository{
         }
     }
 
-    public ArrayList<Client> getClients() {
+    public Set<Client> getClients() {
         //return all the elements in client
         return clients;
     }

@@ -5,8 +5,11 @@ public class Pensioner extends Client{
     }
 
     public Pensioner(String name, String email, String phoneNumber) {
-
         super(name, email, phoneNumber);
+    }
+
+    public Pensioner(int idClient, String name, String email, String phoneNumber) {
+        super(idClient, name, email, phoneNumber);
     }
 
     @Override

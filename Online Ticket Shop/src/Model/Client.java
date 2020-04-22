@@ -24,6 +24,20 @@ public abstract class Client {
         this.phoneNumber = phoneNumber;
     }
 
+    public Client(int idClient, String name, String email, String phoneNumber) {
+        this.idClient = idClient;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public static int getUniqueId() {
+        return uniqueId;
+    }
+
+    public static void setUniqueId(int uniqueId) {
+        Client.uniqueId = uniqueId;
+    }
 
     public abstract double computeDiscount();
 
@@ -65,7 +79,7 @@ public abstract class Client {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber+
-                "}";
+                "}\n";
     }
 
     @Override

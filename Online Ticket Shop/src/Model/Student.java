@@ -12,6 +12,11 @@ public class Student extends Client {
         this.noLegit = noLegit;
     }
 
+    public Student(int idClient, String name, String email, String phoneNumber, String noLegit) {
+        super(idClient, name, email, phoneNumber);
+        this.noLegit = noLegit;
+    }
+
     public String getNoLegit() {
 
         return noLegit;
