@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class Main {
-
+    static IOFileService ioFileService = IOFileService.getInstance();
     static EventService eventService = EventService.getInstance();
     static LocationService locationService = LocationService.getInstance();
     static ClientService clientService = ClientService.getInstance();
@@ -411,7 +411,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        IOFileService ioFileService = IOFileService.getInstance();
 
         FileEvent fileEvent = FileEvent.getInstance();
         FileClient fileClient = FileClient.getInstance();
