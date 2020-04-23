@@ -4,6 +4,8 @@ import Model.Client;
 import Model.Event;
 import Model.SoldTicket;
 import Model.TicketDetails;
+import Service.ClientService;
+import Service.TicketDetailsService;
 
 import java.util.ArrayList;
 
@@ -53,7 +55,6 @@ public class SoldTicketRepository {
             if(tickets.get(i).getIdTicketDetails() == id) {
                 tickets.remove(i);
                 i--;
-                break;
             }
         }
     }
@@ -68,17 +69,6 @@ public class SoldTicketRepository {
         }
     }
 
-/*
-    public void removeSoldTicketByLocationId(int id) {
-        for(int i = 0 ; i < tickets.size() ; i++){
-            if(tickets.get(i).getEvent().getLocation().getIdLocation() == id) {
-                tickets.remove(i);
-                i--;
-                break;
-            }
-        }
-    }
-*/
     //find
     public ArrayList<SoldTicket> findSoldTicketByTicketDetailsId(int id) {
         ArrayList<SoldTicket> array = new ArrayList<>();
@@ -103,6 +93,9 @@ public class SoldTicketRepository {
     //update
 
     public void updateSoldTicketDetails(int id, int newId) {
+        TicketDetails t = TicketDetailsService.getInstance().getTicketDetailsById(newId);
+        if(t == null)
+            throw new IllegalArgumentException("No ticket having new Id");
         //update the clients of some tickets. The id of a sold ticket is given
         for(int i = 0 ; i < tickets.size() ; i++) {
             if(tickets.get(i).getIdTicketDetails() == id) {
@@ -113,6 +106,9 @@ public class SoldTicketRepository {
 
     public void updateSoldTicketClient(int id, int newId) {
         //update the clients of some tickets
+        Client c = ClientService.getInstance().getClientById(newId);
+        if(c == null)
+            throw new IllegalArgumentException("No client having new Id");
         for(int i = 0 ; i < tickets.size() ; i++) {
             if(tickets.get(i).getIdClient() == id) {
                 tickets.get(i).setIdClient(newId);

@@ -1,13 +1,8 @@
 package Service;
 
-import Model.Date;
-import Model.Event;
-import Model.Location;
-import Model.TicketDetails;
+import Model.*;
 import Repository.TicketDetailsRepository;
-import Service.Audit.AuditService;
-import Service.Audit.EventFileService;
-import Service.Audit.TicketDetailsFileService;
+import Service.Audit.*;
 
 import java.util.ArrayList;
 
@@ -15,8 +10,8 @@ public class TicketDetailsService {
     private TicketDetailsRepository ticketDetailsRepository = new TicketDetailsRepository();
     private static TicketDetailsService instance = new TicketDetailsService();
     private static AuditService auditService = AuditService.getInstance();
-    private TicketDetailsFileService ticketDetailsFileService = TicketDetailsFileService.getInstance(ticketDetailsRepository);
-
+    public static IOFileService<FileTicketDetails, TicketDetails> ioFileService = IOFileService.getInstance();
+    public static FileTicketDetails fileTicketDetails = FileTicketDetails.getInstance();
     private TicketDetailsService() {
     }
 
@@ -35,7 +30,7 @@ public class TicketDetailsService {
         if(loc == null)
             throw new IllegalArgumentException("No location having this id!");
 
-        ticketDetailsFileService.appendInFile(t);
+        ioFileService.appendInFile(fileTicketDetails, t, "detailsOfTickets.csv");
         ticketDetailsRepository.addTicket(t);
         return t;
     }
@@ -47,7 +42,7 @@ public class TicketDetailsService {
         //remove a ticket detail by ticket detail id, and also sold tickets having this ticket detail
         ticketDetailsRepository.removeTicketById(id);
         soldTicketService.removeTicketByTicketDetailsId(id);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
 
@@ -60,7 +55,7 @@ public class TicketDetailsService {
             soldTicketService.removeTicketByTicketDetailsId(t.getIdTicket());
         }
         ticketDetailsRepository.removeTicketDetailsByEventId(id);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     public void removeTicketByLocationId(int id) {
@@ -73,7 +68,7 @@ public class TicketDetailsService {
             soldTicketService.removeTicketByTicketDetailsId(ticket.getIdTicket());
         }
         ticketDetailsRepository.removeTicketByLocationId(id);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
 
@@ -91,7 +86,7 @@ public class TicketDetailsService {
         if(t == null)
             throw new IllegalArgumentException("No ticket having this id!");
         ticketDetailsRepository.updateTicketDetailsEvent(id, newId);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     public void updateTicketDetailsLocationOfEvent(int id, int newIdLocation) {
@@ -100,7 +95,7 @@ public class TicketDetailsService {
         if(t == null)
             throw new IllegalArgumentException("No ticket having this id!");
         ticketDetailsRepository.updateTicketDetailsLocation(id, newIdLocation);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     public void updateTicketDetailsDateOfEvent(Date date, Date newDate) {
@@ -109,7 +104,7 @@ public class TicketDetailsService {
         if(t.size() == 0)
             throw new IllegalArgumentException("No tickets on this date!");
         ticketDetailsRepository.updateTicketDetailsDate(date, newDate);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     public void updateTicketDetailsDateOfEvent(int id, Date newDate) {
@@ -118,7 +113,7 @@ public class TicketDetailsService {
         if(t == null)
             throw new IllegalArgumentException("No ticket having this id!");
         ticketDetailsRepository.updateTicketDetailsDate(id, newDate);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     public void updateTicketDetailsHourOfEvent(int id, String hour) {
@@ -127,7 +122,7 @@ public class TicketDetailsService {
         if(t == null)
             throw new IllegalArgumentException("No ticket having this id!");
         ticketDetailsRepository.updateTicketDetailsHour(id, hour);
-        ticketDetailsFileService.updateFile();
+        ioFileService.updateFile(fileTicketDetails, ticketDetailsRepository.getTickets(), "detailsOfTickets.csv");
     }
 
     //get

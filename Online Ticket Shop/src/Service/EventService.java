@@ -2,8 +2,7 @@ package Service;
 
 import Model.Event;
 import Repository.EventRepository;
-import Service.Audit.AuditService;
-import Service.Audit.EventFileService;
+import Service.Audit.*;
 
 import java.util.ArrayList;
 
@@ -11,8 +10,9 @@ public class EventService {
 
     private EventRepository eventRepository = new EventRepository();
     private static EventService instance = new EventService();
-    private EventFileService eventFileService = EventFileService.getInstance(eventRepository);
     private static AuditService auditService = AuditService.getInstance();
+    public static IOFileService<FileEvent, Event> ioFileService = IOFileService.getInstance();
+    public static FileEvent fileEvent = FileEvent.getInstance();
     private EventService() {
     }
 
@@ -22,7 +22,7 @@ public class EventService {
 
     public Event addEvent(Event e) {
         auditService.writeInAudit("Add event");
-        eventFileService.appendInFile(e);
+        ioFileService.appendInFile(fileEvent, e, "events.csv");
         eventRepository.addEvent(e);
         return e;
     }
@@ -34,7 +34,7 @@ public class EventService {
         auditService.writeInAudit("Remove event by id");
         eventRepository.removeEventById(id);
         ticketDetailsService.removeTicketByEventId(id); //remove sell tickets with this event id also
-        eventFileService.updateFile();
+        ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
     }
 
     //find
@@ -50,7 +50,8 @@ public class EventService {
         if(e == null)
             throw new IllegalArgumentException("No event having this id!");
         eventRepository.updateNameEvent(id, newName);
-        eventFileService.updateFile();
+        ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
+
 
     }
 
@@ -60,7 +61,8 @@ public class EventService {
         if(e == null)
             throw new IllegalArgumentException("No event having this id!");
         eventRepository.updatePriceEventById(id, newPrice);
-        eventFileService.updateFile();
+        ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
+
 
     }
 
@@ -70,7 +72,8 @@ public class EventService {
         if(e == null)
             throw new IllegalArgumentException("No event having this id!");
         eventRepository.updateDurationEventById(id, newDuration);
-        eventFileService.updateFile();
+        ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
+
     }
 
     public ArrayList<Event> getEvents() {

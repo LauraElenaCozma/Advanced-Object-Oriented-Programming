@@ -4,9 +4,11 @@ import Model.*;
 import Service.*;
 import Service.Audit.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -303,7 +305,7 @@ public class Main {
                     break;
                 case 3: System.out.println("\nName = ");
                     name = in.nextLine();
-                    Vector<Client> cl = clientService.findClientByName(name);
+                    ArrayList<Client> cl = clientService.findClientByName(name);
                     if(cl.size() == 0)
                         System.out.println("No clients with this name");
                     else System.out.println(cl);
@@ -409,18 +411,19 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        IOFileService ioFileService = IOFileService.getInstance();
 
-        EventFileService eventFileService = EventFileService.getInstance(eventService.getEventRepository());
-        TicketDetailsFileService ticketDetailsFileService = TicketDetailsFileService.getInstance(ticketDetailsService.getTicketDetailsRepository());
-        SoldTicketFileService soldTicketFileService = SoldTicketFileService.getInstance(soldTicketService.getSoldTicketRepository());
-        LocationFileService locationFileService = LocationFileService.getInstance(locationService.getLocationRepository());
-        ClientFileService clientFileService = ClientFileService.getInstance(clientService.getClientRepository());
+        FileEvent fileEvent = FileEvent.getInstance();
+        FileClient fileClient = FileClient.getInstance();
+        FileLocation fileLocation = FileLocation.getInstance();
+        FileTicketDetails fileTicketDetails = FileTicketDetails.getInstance();
+        FileSoldTicket fileSoldTicket = FileSoldTicket.getInstance();
 
-        eventFileService.loadFromFile();
-        ticketDetailsFileService.loadFromFile();
-        soldTicketFileService.loadFromFile();
-        locationFileService.loadFromFile();
-        clientFileService.loadFromFile();
+        ioFileService.loadFromFile(fileEvent, "events.csv");
+        ioFileService.loadFromFile(fileClient, "clients.csv");
+        ioFileService.loadFromFile(fileLocation, "locations.csv");
+        ioFileService.loadFromFile(fileTicketDetails, "detailsOfTickets.csv");
+        ioFileService.loadFromFile(fileSoldTicket, "soldTickets.csv");
 
 
         int menu1 = 0;
@@ -451,4 +454,5 @@ public class Main {
            } while(menu1 != 0);
 
     }
+
 }

@@ -88,14 +88,7 @@ public class Event {
                 "}\n";
     }
 
-    public void print(BufferedWriter out) throws IOException {
-        out.write(this.getIdEvent() + "," + this.getName() + "," + this.getDuration() + "," + this.getPrice());
-    }
 
-    public Event read(String line) throws  IOException{
-        String[] data = line.split(",");
-        return new Event(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]));
-    }
 
     @Override
     public boolean equals(Object o) {

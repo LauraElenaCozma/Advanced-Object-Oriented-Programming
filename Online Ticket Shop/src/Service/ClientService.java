@@ -1,21 +1,21 @@
 package Service;
 
 import Model.Client;
+import Model.Event;
 import Model.Location;
 import Repository.ClientRepository;
-import Service.Audit.AuditService;
-import Service.Audit.ClientFileService;
-import Service.Audit.EventFileService;
+import Service.Audit.*;
 
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class ClientService {
     private ClientRepository clientRepository = new ClientRepository();
     private static ClientService instance = new ClientService();
     private static AuditService auditService = AuditService.getInstance();
-    private ClientFileService clientFileService = ClientFileService.getInstance(clientRepository);
+    public static IOFileService<FileClient, Client> ioFileService = IOFileService.getInstance();
+    public static FileClient fileClient = FileClient.getInstance();
 
     private ClientService() {
     }
@@ -28,7 +28,7 @@ public class ClientService {
     public void addClient(Client c) {
         auditService.writeInAudit("Add client");
         clientRepository.addClient(c);
-        clientFileService.appendInFile(c);
+        ioFileService.appendInFile(fileClient, c, "clients.csv");
     }
 
     //remove
@@ -37,12 +37,12 @@ public class ClientService {
         SoldTicketService soldTicketService = SoldTicketService.getInstance();
         //remove clients with name = name
         //the sold tickets of the client are also removed
-        Vector<Client> array = clientRepository.findClientByName(name);
+        ArrayList<Client> array = clientRepository.findClientByName(name);
         for(Client c : array) {
             soldTicketService.removeTicketByClientId(c.getIdClient());
         }
         clientRepository.removeClientByName(name);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     public void removeClientById(int id) {
@@ -52,11 +52,11 @@ public class ClientService {
         //the sold tickets of the client are also removed
         clientRepository.removeClientById(id);
         soldTicketService.removeTicketByClientId(id);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     //find
-    public Vector<Client> findClientByName(String name) {
+    public ArrayList<Client> findClientByName(String name) {
         auditService.writeInAudit("Find client by name");
         return clientRepository.findClientByName(name);
     }
@@ -64,11 +64,11 @@ public class ClientService {
     //update
     public void updateClientName(String name, String newName) {
         auditService.writeInAudit("Update client name");
-        Vector<Client> c = clientRepository.findClientByName(name);
+        ArrayList<Client> c = clientRepository.findClientByName(name);
         if(c.size() == 0)
             throw new IllegalArgumentException("No client having this id!");
         clientRepository.updateClientName(name, newName);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     public void updateClientName(int id, String newName) {
@@ -77,7 +77,7 @@ public class ClientService {
         if(c == null)
             throw new IllegalArgumentException("No client having this id!");
         clientRepository.updateClientName(id, newName);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     public void updateClientEmail(int id, String newEmail) {
@@ -86,7 +86,7 @@ public class ClientService {
         if(c == null)
             throw new IllegalArgumentException("No client having this id!");
         clientRepository.updateClientEmail(id, newEmail);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     public void updateClientPhone(int id, String newPhone) {
@@ -95,7 +95,7 @@ public class ClientService {
         if(c == null)
             throw new IllegalArgumentException("No client having this id!");
         clientRepository.updateClientPhone(id, newPhone);
-        clientFileService.updateFile();
+        ioFileService.updateFile(fileClient, clientRepository.getClients(), "clients.csv");
     }
 
     //get

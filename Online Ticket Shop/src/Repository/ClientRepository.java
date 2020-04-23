@@ -5,7 +5,7 @@ import Model.Client;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class ClientRepository{
     //repo for client
@@ -46,10 +46,10 @@ public class ClientRepository{
     }
 
     //find
-    public Vector<Client> findClientByName(String name) {
-        //VECTOR USED
+    public ArrayList<Client> findClientByName(String name) {
+        //ArrayList USED
         //can be 2 different clients with the same name
-        Vector<Client> c= new Vector<>();
+        ArrayList<Client> c= new ArrayList<>();
         for(Client cl : clients) {
             if(cl.getName().equals(name) == true) {
                 c.add(cl);

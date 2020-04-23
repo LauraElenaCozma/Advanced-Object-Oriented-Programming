@@ -1,11 +1,10 @@
 package Service;
 
+import Model.Event;
 import Model.Location;
 import Model.TicketDetails;
 import Repository.LocationRepository;
-import Service.Audit.AuditService;
-import Service.Audit.EventFileService;
-import Service.Audit.LocationFileService;
+import Service.Audit.*;
 
 import java.util.ArrayList;
 
@@ -13,8 +12,8 @@ public class LocationService {
     private LocationRepository locationRepository = new LocationRepository();
     private static LocationService instance = new LocationService();
     private static AuditService auditService = AuditService.getInstance();
-    private LocationFileService locationFileService = LocationFileService.getInstance(locationRepository);
-
+    public static IOFileService<FileLocation, Location> ioFileService = IOFileService.getInstance();
+    public static FileLocation fileLocation = FileLocation.getInstance();
     private LocationService() {
     }
 
@@ -26,7 +25,7 @@ public class LocationService {
     //add
     public void addLocationInService(Location loc) {
         auditService.writeInAudit("Add location");
-        locationFileService.appendInFile(loc);
+        ioFileService.appendInFile(fileLocation, loc, "locations.csv");
         locationRepository.addLocation(loc);
     }
 
@@ -35,7 +34,6 @@ public class LocationService {
         auditService.writeInAudit("Remove location by id");
         TicketDetailsService ticketDetailsService = TicketDetailsService.getInstance();
         SoldTicketService soldTicketService = SoldTicketService.getInstance();
-        //remove the location with id = id, the tickets having that location and the sold tickets having that location
         ArrayList<TicketDetails> array = ticketDetailsService.getTicketDetailsByIdLocation(id);
 
         for(TicketDetails t : array) {
@@ -43,7 +41,8 @@ public class LocationService {
         }
         ticketDetailsService.removeTicketByLocationId(id);
         locationRepository.removeLocationById(id);
-        locationFileService.updateFile();
+        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
+
     }
 
     //find
@@ -64,7 +63,7 @@ public class LocationService {
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationName(id, newName);
-        locationFileService.updateFile();
+        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
     public void updateLocationVenue(int id, String newVenue) {
@@ -73,13 +72,13 @@ public class LocationService {
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationVenue(id, newVenue);
-        locationFileService.updateFile();
+        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
     public void updateLocationCity(int id, String newCity) {
         auditService.writeInAudit("Update location city");
         locationRepository.updateLocationCity(id, newCity);
-        locationFileService.updateFile();
+        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
     public void updateLocationCountry(int id, String newCountry) {
@@ -88,7 +87,7 @@ public class LocationService {
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationCountry(id, newCountry);
-        locationFileService.updateFile();
+        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
 
