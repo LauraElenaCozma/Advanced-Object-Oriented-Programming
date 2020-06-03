@@ -1,7 +1,7 @@
 package Model;
 
 public abstract class Client {
-    private static int uniqueId = 1;
+
     protected int idClient;
     protected String name;
     protected String email;
@@ -9,16 +9,12 @@ public abstract class Client {
 
 
     public Client() {
-        this.idClient = uniqueId;
-        uniqueId++;
         this.name = "";
         this.email = "";
         this.phoneNumber = "";
     }
 
     public Client(String name, String email, String phoneNumber) {
-        this.idClient = uniqueId;
-        uniqueId++;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -29,14 +25,6 @@ public abstract class Client {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-    }
-
-    public static int getUniqueId() {
-        return uniqueId;
-    }
-
-    public static void setUniqueId(int uniqueId) {
-        Client.uniqueId = uniqueId;
     }
 
     public abstract double computeDiscount();

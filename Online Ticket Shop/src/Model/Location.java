@@ -1,7 +1,7 @@
 package Model;
 
 public class Location {
-    private static int uniqueId = 1;
+    //private static int uniqueId = 1;
     private int idLocation;
     private String venue;
     private String country;
@@ -9,13 +9,13 @@ public class Location {
     private String locationName; //like "Sala Palatului", "TNB", "Opera Nationala Bucuresti"
 
     public Location() {
-        this.idLocation = uniqueId;
-        uniqueId++;
+    //    this.idLocation = uniqueId;
+    //    uniqueId++;
     }
 
     public Location(String venue, String country, String city, String locationName) {
-        this.idLocation = uniqueId;
-        uniqueId++;
+    //    this.idLocation = uniqueId;
+    //    uniqueId++;
         this.venue = venue;
         this.country = country;
         this.city = city;
@@ -29,7 +29,7 @@ public class Location {
         this.city = city;
         this.locationName = locationName;
     }
-
+/*
     public static int getUniqueId() {
         return uniqueId;
     }
@@ -37,7 +37,7 @@ public class Location {
     public static void setUniqueId(int uniqueId) {
         Location.uniqueId = uniqueId;
     }
-
+*/
     public String getVenue() {
 
         return venue;

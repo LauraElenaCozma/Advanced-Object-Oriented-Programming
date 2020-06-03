@@ -1,25 +1,24 @@
 package Main;
 
+import GUI.*;
 import Model.*;
 import Service.*;
 import Service.Audit.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 
 public class Main {
-    static IOFileService ioFileService = IOFileService.getInstance();
     static EventService eventService = EventService.getInstance();
     static LocationService locationService = LocationService.getInstance();
     static ClientService clientService = ClientService.getInstance();
     static TicketDetailsService ticketDetailsService = TicketDetailsService.getInstance();
     static SoldTicketService soldTicketService = SoldTicketService.getInstance();
 
-    public static void eventMenu(Scanner in) {
+    public static void eventMenu(Scanner in) throws SQLException {
         int eMenu = 0;
 
         do {
@@ -89,7 +88,7 @@ public class Main {
         } while(eMenu != 0);
     }
 
-    public static void ticketDetailsMenu(Scanner in) {
+    public static void ticketDetailsMenu(Scanner in) throws SQLException {
         int tdMenu = 0;
 
         do {
@@ -132,7 +131,7 @@ public class Main {
                         } catch (IllegalArgumentException e)  {
                                 //the object was created, but not appended to repository and file
                                 //decrement the current number of object
-                                TicketDetails.setUniqueKey(TicketDetails.getUniqueKey() - 1);
+                                //TicketDetails.setUniqueKey(TicketDetails.getUniqueKey() - 1);
                                 System.out.println(e.getMessage());
                         }
                         break;
@@ -180,7 +179,7 @@ public class Main {
         } while(tdMenu != 0);
     }
 
-    public static void soldTicketMenu(Scanner in) {
+    public static void soldTicketMenu(Scanner in) throws SQLException {
         int stMenu = 0;
 
         do {
@@ -208,7 +207,7 @@ public class Main {
                         try {
                             soldTicketService.addTicket(new SoldTicket(idClient, idTicket));
                         } catch (IllegalArgumentException ex)  {
-                            SoldTicket.setUniqueKey(SoldTicket.getUniqueKey() - 1);
+                            //SoldTicket.setUniqueKey(SoldTicket.getUniqueKey() - 1);
                             System.out.println(ex.getMessage());
                         }
                         break;
@@ -251,7 +250,7 @@ public class Main {
         } while(stMenu != 0);
     }
 
-    public static void clientsMenu(Scanner in) {
+    public static void clientsMenu(Scanner in) throws SQLException {
         int cMenu = 0;
 
         do {
@@ -339,7 +338,7 @@ public class Main {
         } while(cMenu != 0);
     }
 
-    public static void locationsMenu(Scanner in) {
+    public static void locationsMenu(Scanner in) throws SQLException {
         int locMenu = 0;
 
         do {
@@ -410,9 +409,11 @@ public class Main {
         } while(locMenu != 0);
     }
 
-    public static void main(String[] args) {
 
-        FileEvent fileEvent = FileEvent.getInstance();
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
+
+        /*FileEvent fileEvent = FileEvent.getInstance();
         FileClient fileClient = FileClient.getInstance();
         FileLocation fileLocation = FileLocation.getInstance();
         FileTicketDetails fileTicketDetails = FileTicketDetails.getInstance();
@@ -450,8 +451,70 @@ public class Main {
                         break;
 
             }
-           } while(menu1 != 0);
+           } while(menu1 != 0);*/
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        //EventService.getInstance().addEvent(new Event("Visul", 70, 40));
+        EventService.getInstance().removeEventByIdEvent(5);
+        //EventService.getInstance().updateDurationEventById(5, 30);
+        //EventService.getInstance().updatePriceEventById(5,20);
+        //System.out.println(EventService.getInstance().findEventByName("Visatorul"));
+        LocationService ls = LocationService.getInstance();
+        //ls.addLocationInService(new Location("Sala Studio", "Romania", "Bucuresti", "TNB"));
+        //ls.addLocationInService(new Location("Art", "Romania", "Bucuresti", "TNB"));
+        //ls.addLocationInService(new Location("Sala Mare", "Romania", "Iasi", "Teatrul National Iasi"));
+        /*System.out.println(ls.findLocationByName("TNB"));
+        System.out.println(ls.findLocationByCity("Iasi"));
+        System.out.println(ls.findLocationByCity("Roman"));
+        System.out.println(ls.getLocations());
+        ls.updateLocationName(2, "TNB");
+        ls.updateLocationVenue(2, "Sala Art");
+        ls.updateLocationCity(2, "Bucuresti");
+        ls.updateLocationCountry(2, "Romania");*/
+        //ls.removeLocationById(3);
+        TicketDetailsService td = TicketDetailsService.getInstance();
+        java.sql.Date d2 = Date.valueOf("2021-01-05");
+        //td.addTicket(new TicketDetails(1, 1, d2, "20:00"));
+        //td.addTicket(new TicketDetails(5, 4, d2, "19:00"));
+        //System.out.println(td.findTicketByDate(Date.valueOf("2020-05-05")));
+        //td.updateTicketDetailsEventOfEvent(3, 6);
+        //td.updateTicketDetailsLocationOfEvent(4, 4);
+        //td.updateTicketDetailsDateOfEvent(Date.valueOf("2020-05-05"), Date.valueOf("2021-05-05"));
+        //td.updateTicketDetailsDateOfEvent(2, Date.valueOf("2020-08-23"));
+        //td.updateTicketDetailsHourOfEvent(4,"12:30");
+        //System.out.println(td.getTicketDetails());
+        //System.out.println(td.getTicketDetailsById(2));
+        //System.out.println(td.getTicketDetailsByIdLocation(2));
+        //System.out.println(td.getTicketDetailsByIdEvent(3));
 
+        ClientService cs = ClientService.getInstance();
+        //cs.addClient(new Adult("Cozma Mona", "mo29coz","0727183829"));
+        //cs.addClient(new Child("Ionescu Andrei", "andrion","0727231490",12));
+        //cs.addClient(new Student("Stamate Virginia", "stamatin","0727137289", "23974"));
+        //cs.addClient(new Student("Floroiu Ioana", "ioana","0729000089", "23424"));
+        //cs.addClient(new Pensioner("King Albert", "king","0731009282"));
+        SoldTicketService st = SoldTicketService.getInstance();
+        //st.addTicket(new SoldTicket(2, 3));
+        //cs.removeClientById(6);
+        //System.out.println(cs.findClientByName("IonEScu Andrei"));
+        /*cs.updateClientName("Ionescu Andrei", "Popescu Andrei");
+        cs.updateClientEmail(6, "a.yahoo");
+        cs.updateClientPhone(6, "0722233344");*/
+        //cs.updateClientName(6, "Ionescu Andrei");
+        //System.out.println(cs.getClientById(1));
+        /*st.updateTicketDetailsOfTicket(1, 4);
+        st.updateClientOfTicket(1, 1);*/
+        /*System.out.println(st.findSoldTicketByClientId(1));
+        System.out.println(st.findSoldTicketByTicketDetailsId(5));
+        System.out.println(st.getSoldTickets());
+        System.out.println(st.getSoldTicketById(1));
+        st.removeTicketById(2);*/
+        //st.addTicket(new SoldTicket(2, 4));
+        //new ManageEventFrame("Adding event to db");
+        //new ManageLocationFrame("Adding event to db");
+        //new ManageTicketFrame("Adding event to db");
+        //new ManageSoldTicketFrame("Adding event to db");
+        //new ManageClientFrame("Adding event to db");
+        new MainFrame();
     }
 
 }

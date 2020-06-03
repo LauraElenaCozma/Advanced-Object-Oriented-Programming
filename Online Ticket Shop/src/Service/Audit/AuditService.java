@@ -42,7 +42,7 @@ public class AuditService {
 
 
             if(writeHeader) {
-                writeCsv.write("Action,Date");
+                writeCsv.write("Thread Name,Action,Date");
                 writeCsv.newLine();
             }
             writeCsv.append(action + "," + getTimestamp());

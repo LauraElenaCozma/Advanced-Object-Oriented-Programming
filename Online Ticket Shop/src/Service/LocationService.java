@@ -6,14 +6,13 @@ import Model.TicketDetails;
 import Repository.LocationRepository;
 import Service.Audit.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LocationService {
     private LocationRepository locationRepository = new LocationRepository();
     private static LocationService instance = new LocationService();
     private static AuditService auditService = AuditService.getInstance();
-    public static IOFileService<FileLocation, Location> ioFileService = IOFileService.getInstance();
-    public static FileLocation fileLocation = FileLocation.getInstance();
     private LocationService() {
     }
 
@@ -23,15 +22,14 @@ public class LocationService {
     }
 
     //add
-    public void addLocationInService(Location loc) {
-        auditService.writeInAudit("Add location");
-        ioFileService.appendInFile(fileLocation, loc, "locations.csv");
+    public void addLocationInService(Location loc) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Add location");
         locationRepository.addLocation(loc);
     }
 
     //remove
-    public void removeLocationById(int id) {
-        auditService.writeInAudit("Remove location by id");
+    public void removeLocationById(int id) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Remove location by id");
         TicketDetailsService ticketDetailsService = TicketDetailsService.getInstance();
         SoldTicketService soldTicketService = SoldTicketService.getInstance();
         ArrayList<TicketDetails> array = ticketDetailsService.getTicketDetailsByIdLocation(id);
@@ -41,63 +39,58 @@ public class LocationService {
         }
         ticketDetailsService.removeTicketByLocationId(id);
         locationRepository.removeLocationById(id);
-        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
 
     }
 
     //find
-    public ArrayList<Location> findLocationByName(String name) {
-        auditService.writeInAudit("Find location by name");
+    public ArrayList<Location> findLocationByName(String name) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Find location by name");
         return locationRepository.findLocationByLocationName(name);
     }
 
-    public ArrayList<Location> findLocationByCity(String city) {
-        auditService.writeInAudit("Find location by city");
+    public ArrayList<Location> findLocationByCity(String city) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Find location by city");
         return locationRepository.findLocationByCity(city);
     }
 
     //update
-    public void updateLocationName(int id, String newName) {
-        auditService.writeInAudit("Update location name");
+    public void updateLocationName(int id, String newName) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Update location name");
         Location l = locationRepository.getLocationById(id);
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationName(id, newName);
-        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
-    public void updateLocationVenue(int id, String newVenue) {
-        auditService.writeInAudit("Update location venue");
+    public void updateLocationVenue(int id, String newVenue) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Update location venue");
         Location l = locationRepository.getLocationById(id);
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationVenue(id, newVenue);
-        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
-    public void updateLocationCity(int id, String newCity) {
-        auditService.writeInAudit("Update location city");
+    public void updateLocationCity(int id, String newCity) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Update location city");
         locationRepository.updateLocationCity(id, newCity);
-        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
-    public void updateLocationCountry(int id, String newCountry) {
-        auditService.writeInAudit("Update location contry");
+    public void updateLocationCountry(int id, String newCountry) throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Update location contry");
         Location l = locationRepository.getLocationById(id);
         if(l == null)
             throw new IllegalArgumentException("No location having this id!");
         locationRepository.updateLocationCountry(id, newCountry);
-        ioFileService.updateFile(fileLocation, locationRepository.getLocations(), "locations.csv");
     }
 
 
     //get
-    public ArrayList<Location> getLocations() {
-        auditService.writeInAudit("Get locations");
+    public ArrayList<Location> getLocations() throws SQLException {
+        auditService.writeInAudit(Thread.currentThread().getName() + ",Get locations");
         return locationRepository.getLocations();
     }
 
-    public Location getLocationById(int id) {
+    public Location getLocationById(int id) throws SQLException {
         auditService.writeInAudit("Get location by id");
         return locationRepository.getLocationById(id);
     }

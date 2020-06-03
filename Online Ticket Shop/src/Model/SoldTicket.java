@@ -2,7 +2,6 @@ package Model;
 
 public class SoldTicket {
     //Sold tickets are here. It has the ticket with details and the client
-    private static int uniqueKey = 1;
     private int idTicket;
     private int idClient;
     private int idTicketDetails;
@@ -12,8 +11,6 @@ public class SoldTicket {
     }
 
     public SoldTicket(int idClient, int idTicketDetails) {
-        this.idTicket = uniqueKey;
-        uniqueKey++;
         this.idClient = idClient;
         this.idTicketDetails = idTicketDetails;
     }
@@ -25,13 +22,6 @@ public class SoldTicket {
         this.priceAfterDiscount = priceAfterDiscount;
     }
 
-    public static int getUniqueKey() {
-        return uniqueKey;
-    }
-
-    public static void setUniqueKey(int uniqueKey) {
-        SoldTicket.uniqueKey = uniqueKey;
-    }
 
     public int getIdTicket() {
 

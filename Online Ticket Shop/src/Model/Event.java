@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 public class Event {
-    static private int uniqueId = 1;
+    //static private int uniqueId = 10;
     private int idEvent;
     private String name;
     private int duration; //duration of play
@@ -12,13 +12,13 @@ public class Event {
 
     public Event() {
 
-        this.idEvent = uniqueId;
-        uniqueId++;
+        //this.idEvent = uniqueId;
+        //uniqueId++;
     }
 
     public Event(String name, int duration, double price) {
-        this.idEvent = uniqueId;
-        uniqueId ++;
+        //this.idEvent = uniqueId;
+        //uniqueId ++;
         this.name = name;
         this.duration = duration;
         this.price = price;
@@ -30,13 +30,13 @@ public class Event {
         this.price = price;
     }
 
-    public static void setUniqueId(int noElem) {
-        uniqueId = noElem;
-    }
+    //public static void setUniqueId(int noElem) {
+      //  uniqueId = noElem;
+    //}
 
-    public static int getUniqueId() {
+    /*public static int getUniqueId() {
         return uniqueId;
-    }
+    }*/
     public double getPrice() {
 
         return price;

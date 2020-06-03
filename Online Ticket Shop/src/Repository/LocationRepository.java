@@ -1,119 +1,163 @@
 package Repository;
 
+import Model.Event;
 import Model.Location;
 
+import java.sql.*;
 import java.util.ArrayList;
 
 public class LocationRepository {
     private ArrayList<Location> locations;
+    String url = "jdbc:mysql://localhost:3306/ticketshop";
+    String username = "root";
+    String password = "1234";
+    Connection con;
 
     public LocationRepository() {
 
         locations = new ArrayList<>();
     }
 
-    public LocationRepository(ArrayList<Location> locations) {
 
-        this.locations = new ArrayList<>(locations);
-    }
-
-    public void addLocation(Location location) {
+    public void addLocation(Location location) throws SQLException {
         //add a new location in locations
-        locations.add(location);
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "INSERT INTO locations VALUES(NULL, ?, ?, ?, ?)";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1,location.getVenue());
+        statement.setString(2, location.getCountry());
+        statement.setString(3, location.getCity());
+        statement.setString(4, location.getLocationName());
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
     //remove
-    public void removeLocationById(int id){
+    public void removeLocationById(int id) throws SQLException {
         //remove location with a given id
-        int index = -1;
-        for(int i = 0 ; i < locations.size() ; i++){
-            if(locations.get(i).getIdLocation() == id) {
-                index = i;
-                break;
-            }
-        }
-
-        if(index == -1) {
-            System.out.println("There is no location with this id");
-        }
-        else {
-            locations.remove(index);
-
-        }
-
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "DELETE FROM locations WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
 
     //find
-    public ArrayList<Location> findLocationByLocationName(String name) {
+    public ArrayList<Location> findLocationByLocationName(String name) throws SQLException {
         //find location that has name = name
-        ArrayList<Location> indexes = new ArrayList<>();
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getLocationName().equals(name) == true) {
-                indexes.add(locations.get(i));
-            }
-        }
-        return indexes;
+        ArrayList<Location> loc = new ArrayList<>();
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM locations WHERE name = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, name);
+        ResultSet rs = statement.executeQuery();
+        while(rs.next())
+            loc.add(new Location(rs.getInt("id_location"), rs.getString("venue"), rs.getString("country"), rs.getString("city"),rs.getString("name")));
+        statement.close();
+        con.close();
+        return loc;
     }
 
-    public ArrayList<Location> findLocationByCity(String city) {
+    public ArrayList<Location> findLocationByCity(String city) throws SQLException {
 
-        ArrayList<Location> indexes = new ArrayList<>();
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getCity().equals(city) == true) {
-                indexes.add(locations.get(i));
-            }
-        }
-        return indexes;
+        ArrayList<Location> loc = new ArrayList<>();
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM locations WHERE city = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, city);
+        ResultSet rs = statement.executeQuery();
+        while(rs.next())
+            loc.add(new Location(rs.getInt("id_location"), rs.getString("venue"), rs.getString("country"), rs.getString("city"),rs.getString("name")));
+        statement.close();
+        con.close();
+        return loc;
     }
 
     //update
-    public void updateLocationName(int id, String newName) {
+    public void updateLocationName(int id, String newName) throws SQLException {
         //update the name of a location. The id location is given
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getIdLocation() == id) {
-                locations.get(i).setLocationName(newName);
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE locations SET name = ? WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, newName);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
-    public void updateLocationVenue(int id, String newVenue) {
+
+    public void updateLocationVenue(int id, String newVenue) throws SQLException {
         //update the venue of a location. The id location is given
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getIdLocation() == id) {
-                locations.get(i).setVenue(newVenue);
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE locations SET venue = ? WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, newVenue);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
-    public void updateLocationCity(int id, String newCity) {
+    public void updateLocationCity(int id, String newCity) throws SQLException {
         //update the city of a location
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getIdLocation() == id) {
-                locations.get(i).setCity(newCity);
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE locations SET city = ? WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, newCity);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
-    public void updateLocationCountry(int id, String newCountry) {
+    public void updateLocationCountry(int id, String newCountry) throws SQLException {
         //update the country of a location
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if(locations.get(i).getIdLocation() == id) {
-                locations.get(i).setCountry(newCountry);
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE locations SET country = ? WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, newCountry);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
-    public ArrayList<Location> getLocations() {
+    public ArrayList<Location> getLocations() throws SQLException {
 
-        return locations;
+        //return locations;
+        ArrayList<Location> loc = new ArrayList<>();
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM locations";
+        Statement statement = con.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next())
+            loc.add(new Location(rs.getInt("id_location"), rs.getString("venue"), rs.getString("country"), rs.getString("city"), rs.getString("name")));
+        statement.close();
+        con.close();
+        return loc;
     }
 
-    public Location getLocationById(int id) {
-        for(int i = 0 ; i < locations.size() ; i++) {
-            if (locations.get(i).getIdLocation() == id) {
-                return locations.get(i);
-            }
-        }
-        return null;
+    public Location getLocationById(int id) throws SQLException {
+
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM locations WHERE id_location = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet rs = statement.executeQuery();
+
+        Location loc;
+        if(rs.next() == false)
+            loc = null;
+        else loc = new Location(rs.getInt("id_location"), rs.getString("venue"), rs.getString("country"), rs.getString("city"), rs.getString("name"));
+        statement.close();
+        con.close();
+
+        return loc;
+
     }
+
 }

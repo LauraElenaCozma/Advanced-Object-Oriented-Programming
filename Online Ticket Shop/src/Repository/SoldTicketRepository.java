@@ -1,134 +1,167 @@
 package Repository;
 
-import Model.Client;
-import Model.Event;
 import Model.SoldTicket;
-import Model.TicketDetails;
-import Service.ClientService;
-import Service.TicketDetailsService;
 
+import java.sql.*;
 import java.util.ArrayList;
+
+
 
 public class SoldTicketRepository {
     //repository for sold tickets
     private ArrayList<SoldTicket> tickets;
+    String url = "jdbc:mysql://localhost:3306/ticketshop";
+    String username = "root";
+    String password = "1234";
+    Connection con;
 
     public SoldTicketRepository() {
 
         tickets = new ArrayList<>();
     }
 
-    public SoldTicketRepository(ArrayList<SoldTicket> tickets) {
-
-        this.tickets = new ArrayList<>(tickets);
-    }
 
     //add
-    public void addTicket(SoldTicket ticket) {
+    public int addTicket(SoldTicket ticket) throws SQLException {
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "INSERT INTO soldtickets (id_soldticket, id_client, id_ticket) VALUES(NULL, ?, ?)";
+        PreparedStatement statement = con.prepareStatement(sql);
 
-        tickets.add(ticket);
+        statement.setInt(1, ticket.getIdClient());
+        statement.setInt(2, ticket.getIdTicketDetails());
+        statement.executeUpdate();
+        sql = "SELECT LAST_INSERT_ID()";
+        Statement statement1 = con.createStatement();
+        ResultSet rs = statement1.executeQuery(sql);
+        rs.next();
+        int id = rs.getInt(1);
+
+        statement.close();
+        statement1.close();
+        con.close();
+        return id;
     }
 
     //remove
-    public void removeSoldTicketById(int id){
+    public void removeSoldTicketById(int id) throws SQLException {
         //remove Ticket with a given id
-        int index = -1;
-        for(int i = 0 ; i < tickets.size() ; i++){
-            if(tickets.get(i).getIdTicket() == id) {
-                index = i;
-                break;
-            }
-        }
-
-        if(index == -1) {
-            System.out.println("There is no ticket with this id");
-        }
-        else {
-            tickets.remove(index);
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "DELETE FROM soldtickets WHERE id_soldticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
 
-    public void removeSoldTicketByTicketDetailsId(int id){
+    public void removeSoldTicketByTicketDetailsId(int id) throws SQLException {
         //remove ticket with a given event
-        for(int i = 0 ; i < tickets.size() ; i++){
-            if(tickets.get(i).getIdTicketDetails() == id) {
-                tickets.remove(i);
-                i--;
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "DELETE FROM soldtickets WHERE id_ticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
 
-    public void removeSoldTicketByClientId(int id) {
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getIdClient() == id) {
-                tickets.remove(i);
-                i--;
-            }
-        }
+    public void removeSoldTicketByClientId(int id) throws SQLException {
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "DELETE FROM soldtickets WHERE id_client = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
     //find
-    public ArrayList<SoldTicket> findSoldTicketByTicketDetailsId(int id) {
+    public ArrayList<SoldTicket> findSoldTicketByTicketDetailsId(int id) throws SQLException {
         ArrayList<SoldTicket> array = new ArrayList<>();
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getIdTicketDetails() == id) {
-                array.add(tickets.get(i));
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM soldtickets WHERE id_ticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet rs = statement.executeQuery();
+        while(rs.next())
+            array.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
+        statement.close();
+        con.close();
         return array;
     }
 
-    public ArrayList<SoldTicket> findSoldTicketByClientId(int id) {
+    public ArrayList<SoldTicket> findSoldTicketByClientId(int id) throws SQLException {
         ArrayList<SoldTicket> array = new ArrayList<>();
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getIdClient() == id) {
-                array.add(tickets.get(i));
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM soldtickets WHERE id_client = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet rs = statement.executeQuery();
+        while(rs.next())
+            array.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
+        statement.close();
+        con.close();
         return array;
     }
 
     //update
 
-    public void updateSoldTicketDetails(int id, int newId) {
-        TicketDetails t = TicketDetailsService.getInstance().getTicketDetailsById(newId);
-        if(t == null)
-            throw new IllegalArgumentException("No ticket having new Id");
-        //update the clients of some tickets. The id of a sold ticket is given
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getIdTicketDetails() == id) {
-                tickets.get(i).setIdTicketDetails(newId);
-            }
-        }
+    public void updateSoldTicketDetails(int id, int newId) throws SQLException {
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE soldtickets SET id_ticket = ? WHERE id_soldticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, newId);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
-    public void updateSoldTicketClient(int id, int newId) {
+    public void updateSoldTicketClient(int id, int newId) throws SQLException {
         //update the clients of some tickets
-        Client c = ClientService.getInstance().getClientById(newId);
-        if(c == null)
-            throw new IllegalArgumentException("No client having new Id");
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if(tickets.get(i).getIdClient() == id) {
-                tickets.get(i).setIdClient(newId);
-            }
-        }
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "UPDATE soldtickets SET id_client = ? WHERE id_soldticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, newId);
+        statement.setInt(2, id);
+        statement.executeUpdate();
+        statement.close();
+        con.close();
     }
 
     //get
-    public ArrayList<SoldTicket> getTickets() {
+    public ArrayList<SoldTicket> getTickets() throws SQLException {
 
-        return tickets;
+        //return tickets;
+        ArrayList<SoldTicket> t = new ArrayList<>();
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM soldtickets";
+        Statement statement = con.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next())
+            t.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
+        statement.close();
+        con.close();
+        return t;
     }
 
-    public SoldTicket getTicketById(int id) {
-        for(int i = 0 ; i < tickets.size() ; i++) {
-            if (tickets.get(i).getIdTicket() == id) {
-                return tickets.get(i);
-            }
-        }
-        return null;
+    public SoldTicket getTicketById(int id) throws SQLException {
+        con = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM soldtickets WHERE id_soldticket = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet rs = statement.executeQuery();
+
+        SoldTicket t;
+        if(rs.next() == false)
+            t = null;
+        else t = new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount"));
+        statement.close();
+        con.close();
+
+        return t;
     }
 
 }
