@@ -174,7 +174,7 @@ main,Get all clients,2020-06-03 22:53:23.278
 main,Get ticket details,2020-06-03 22:53:23.304
 main,Get all the events,2020-06-03 22:53:23.509
 main,Get locations,2020-06-03 22:53:23.531
-AWT-EventQueue-0,,Add client,2020-06-03 22:54:06.328
+AWT-EventQueue-0,Add client,2020-06-03 22:54:06.328
 AWT-EventQueue-0,Get all clients,2020-06-03 22:54:07.518
 main,Get sold tickets,2020-06-03 22:55:48.212
 main,Get all clients,2020-06-03 22:55:48.285
@@ -189,3 +189,8 @@ Thread-1,Update client name,2020-06-03 22:56:33.859
 AWT-EventQueue-0,Get all clients,2020-06-03 22:56:35.962
 Thread-2,Add event,2020-06-03 22:56:53.059
 AWT-EventQueue-0,Get all the events,2020-06-03 22:56:54.29
+main,Get sold tickets,2020-06-03 23:05:24.278
+main,Get all clients,2020-06-03 23:05:24.374
+main,Get ticket details,2020-06-03 23:05:24.401
+main,Get all the events,2020-06-03 23:05:24.612
+main,Get locations,2020-06-03 23:05:24.637

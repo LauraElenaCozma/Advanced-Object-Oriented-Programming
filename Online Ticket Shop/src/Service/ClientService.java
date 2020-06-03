@@ -27,7 +27,7 @@ public class ClientService {
     }
 
     public void addClient(Client c) throws SQLException {
-        auditService.writeInAudit(",Add client");
+        auditService.writeInAudit("Add client");
         clientRepository.addClient(c);
     }
 
