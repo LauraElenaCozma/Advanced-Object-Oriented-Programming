@@ -1,16 +1,14 @@
 package GUI;
 
 
-import Model.Location;
+import Main.Main;
 import Model.TicketDetails;
-import Service.LocationService;
 import Service.TicketDetailsService;
-
+import Thread.ThreadAddTicket;
 import org.jdesktop.swingx.JXDatePicker;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -18,17 +16,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ManageTicketFrame {
-    private Connection con;
-    static private TicketDetailsService ticketDetailsService = TicketDetailsService.getInstance();
+
+    static private TicketDetailsService ticketDetailsService = Main.ticketDetailsService;
     JPanel f = new JPanel();
     static String columns[] = {"Id Ticket", "Id Event", "Id Location", "Date", "Hour"};
     static DefaultTableModel tableModelTickets = new DefaultTableModel(columns, 0);
-    Color background = new Color(164, 189, 186);
-    Color fontC = new Color(0, 0, 0);
-    Font font = new Font("Tahoma", Font.PLAIN, 18);
-    Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-    Color c1 = new Color(241, 241, 240);
-    Color c2 = new Color(0,0,0);
+
 
     public JPanel getPanel() {
         return f;
@@ -44,27 +37,26 @@ public class ManageTicketFrame {
         }
     }
 
-    public ManageTicketFrame(String title) throws SQLException {
-
+    public ManageTicketFrame() throws SQLException {
         JButton add = new JButton("Add Ticket");
         add.setBounds(20, 55, 200, 50);
-        styleForButton(add, c2, c1);
+        styleForButton(add, MainFrame.c2, MainFrame.c1);
         JButton remove = new JButton("Remove Ticket");
         remove.setBounds(20, 185, 200, 50);
-        styleForButton(remove, c1,c2);
+        styleForButton(remove, MainFrame.c1,MainFrame.c2);
         JButton update = new JButton("Update Ticket");
         update.setBounds(20, 315, 200, 50);
-        styleForButton(update, c2,c1);
+        styleForButton(update, MainFrame.c2,MainFrame.c1);
         JButton get = new JButton("Get Ticket");
         get.setBounds(20, 445, 200, 50);
-        styleForButton(get, c1, c2);
+        styleForButton(get, MainFrame.c1, MainFrame.c2);
         JPanel ptable = new JPanel();
         ptable.setBounds(300, 20, 700, 200);
         ptable.setLayout(null);
-        ptable.setBackground(background);
+        ptable.setBackground(MainFrame.background);
         JLabel titleTable = new JLabel("All the tickets are here:");
-        titleTable.setFont(font);
-        titleTable.setForeground(fontC);
+        titleTable.setFont(MainFrame.font);
+        titleTable.setForeground(MainFrame.fontC);
         titleTable.setBounds(50, 0, 300, 20);
         ptable.add(titleTable);
         getTickets(ptable);
@@ -72,7 +64,7 @@ public class ManageTicketFrame {
         JPanel paction = new JPanel();
         paction.setLayout(null);
         paction.setBounds(300, 230, 700, 500);
-        paction.setBackground(background);
+        paction.setBackground(MainFrame.background);
 
         add.addActionListener(event -> putPanel(paction, addTicket()));
         remove.addActionListener(event -> putPanel(paction, removeTicketById()));
@@ -86,7 +78,7 @@ public class ManageTicketFrame {
         f.add(ptable);
         f.add(paction);
         f.setSize(1300, 1000);
-        f.setBackground(background);
+        f.setBackground(MainFrame.background);
         f.setLayout(null);
     }
 
@@ -113,41 +105,41 @@ public class ManageTicketFrame {
         JPanel p = new JPanel();
         p.setBounds(0, 0, 600, 400);
         p.setLayout(null);
-        p.setBackground(background);
+        p.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Fill the fields to add a new ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(35, 10, 400, 20);
 
         JLabel idEventLabel = new JLabel("Id Event: ");
         JTextField idEvent = new JTextField();
         idEventLabel.setBounds(10, 60, 200, 30);
-        idEventLabel.setFont(font2);
-        idEventLabel.setForeground(fontC);
+        idEventLabel.setFont(MainFrame.font2);
+        idEventLabel.setForeground(MainFrame.fontC);
         idEvent.setBounds(80, 60, 200, 30);
 
         JLabel idLocationLabel = new JLabel("Location: ");
         JTextField idLocation = new JTextField();
         idLocationLabel.setBounds(10, 110, 200, 30);
-        idLocationLabel.setFont(font2);
-        idLocationLabel.setForeground(fontC);
+        idLocationLabel.setFont(MainFrame.font2);
+        idLocationLabel.setForeground(MainFrame.fontC);
         idLocation.setBounds(80, 110, 200, 30);
 
         JPanel panel = new JPanel();
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel hourLabel = new JLabel("Hour: ");
         JTextField hour = new JTextField();
         hourLabel.setBounds(10, 160, 200, 30);
-        hourLabel.setFont(font2);
-        hourLabel.setForeground(fontC);
+        hourLabel.setFont(MainFrame.font2);
+        hourLabel.setForeground(MainFrame.fontC);
         hour.setBounds(80, 160, 200, 30);
 
         JLabel dateLabel = new JLabel("Date: ");
         dateLabel.setBounds(10, 210, 200, 30);
-        dateLabel.setFont(font2);
-        dateLabel.setForeground(fontC);
+        dateLabel.setFont(MainFrame.font2);
+        dateLabel.setForeground(MainFrame.fontC);
         p.add(dateLabel);
         panel.setBounds(170, 203, 110, 30);
         JXDatePicker picker = new JXDatePicker();
@@ -160,7 +152,7 @@ public class ManageTicketFrame {
 
         JButton button = new JButton("Add Ticket");
         button.setBounds(80, 270, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> addTicketDB(idEvent, idLocation, picker, hour));
 
         p.add(idEvent);
@@ -185,7 +177,16 @@ public class ManageTicketFrame {
                 JOptionPane.showMessageDialog(null, "All the fields are required");
             }
             else {
-                this.ticketDetailsService.addTicket(new TicketDetails(idE, idL, d2, h));
+                ThreadAddTicket thread = new ThreadAddTicket(new TicketDetails(idE, idL, d2, h));
+                thread.start();
+                try
+                {
+                    thread.join();
+                }
+                catch (InterruptedException ex)
+                {
+                    System.out.println("Thread error!");
+                }
                 JOptionPane.showMessageDialog(null, "Ticket was succesfully added!");
                 ArrayList<TicketDetails> tickets = ticketDetailsService.getTicketDetails();
                 TicketDetails td = tickets.get(tickets.size() - 1);
@@ -223,23 +224,23 @@ public class ManageTicketFrame {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Fill the fields to remove a ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(60, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of ticket:");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(90, 60, 200, 30);
         JButton button = new JButton("Remove ticket");
         button.setBounds(90, 125, 200, 40);
         button.addActionListener(event -> removeTicketByIdDB(id));
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         panel.add(title);
         panel.add(id);
         panel.add(idLabel);
@@ -270,29 +271,29 @@ public class ManageTicketFrame {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Fill the fields to update a ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(60, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of ticket:");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(90, 60, 200, 30);
 
         JLabel idLocationLabel = new JLabel("New location id:");
         idLocationLabel.setBounds(5, 110, 200, 30);
-        idLocationLabel.setFont(font2);
-        idLocationLabel.setForeground(fontC);
+        idLocationLabel.setFont(MainFrame.font2);
+        idLocationLabel.setForeground(MainFrame.fontC);
         JTextField idLocation = new JTextField();
         idLocation.setBounds(90, 110, 200, 30);
         JButton button = new JButton("Update ticket");
         button.setBounds(90, 175, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> updateTicketLocationDB(id, idLocation));
         panel.add(title);
         panel.add(id);
@@ -330,22 +331,22 @@ public class ManageTicketFrame {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         JLabel title = new JLabel("Insert an id to see the ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(70, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of ticket:");
         JTextField id = new JTextField();
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         idLabel.setBounds(5, 60, 200, 30);
         id.setBounds(90, 60, 200, 30);
 
         JButton button = new JButton("Get ticket");
         button.setBounds(90, 125, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> getTicketByIdDB(id, panel));
 
         panel.add(title);

@@ -1,0 +1,178 @@
+Thread Name,Action,Date
+main,Get sold tickets,2020-06-03 22:23:42.679
+main,Get all clients,2020-06-03 22:23:42.756
+main,Get ticket details,2020-06-03 22:23:42.784
+main,Get all the events,2020-06-03 22:23:42.983
+main,Get locations,2020-06-03 22:23:43.004
+AWT-EventQueue-0,Add location,2020-06-03 22:24:23.467
+AWT-EventQueue-0,Get locations,2020-06-03 22:24:25.29
+AWT-EventQueue-0,Get location by id,2020-06-03 22:25:13.291
+AWT-EventQueue-0,Remove location by id,2020-06-03 22:25:13.302
+AWT-EventQueue-0,Get location by id,2020-06-03 22:25:17.953
+AWT-EventQueue-0,Remove location by id,2020-06-03 22:25:17.963
+main,Get sold tickets,2020-06-03 22:25:53.956
+main,Get all clients,2020-06-03 22:25:54.037
+main,Get ticket details,2020-06-03 22:25:54.064
+main,Get all the events,2020-06-03 22:25:54.3
+main,Get locations,2020-06-03 22:25:54.336
+AWT-EventQueue-0,Get location by id,2020-06-03 22:25:59.371
+AWT-EventQueue-0,Remove location by id,2020-06-03 22:25:59.396
+main,Get sold tickets,2020-06-03 22:29:01.005
+main,Get all clients,2020-06-03 22:29:01.078
+main,Get ticket details,2020-06-03 22:29:01.106
+main,Get all the events,2020-06-03 22:29:01.305
+main,Get locations,2020-06-03 22:29:01.325
+main,Get sold tickets,2020-06-03 22:29:52.781
+main,Get all clients,2020-06-03 22:29:52.902
+main,Get ticket details,2020-06-03 22:29:52.94
+main,Get all the events,2020-06-03 22:29:53.155
+main,Get locations,2020-06-03 22:29:53.194
+AWT-EventQueue-0,Get location by id,2020-06-03 22:30:05.683
+AWT-EventQueue-0,Remove location by id,2020-06-03 22:30:05.702
+AWT-EventQueue-0,Get locations,2020-06-03 22:30:07.627
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:30:07.637
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:30:07.646
+AWT-EventQueue-0,Add location,2020-06-03 22:31:57.606
+AWT-EventQueue-0,Get locations,2020-06-03 22:31:59.284
+AWT-EventQueue-0,Get location by id,2020-06-03 22:32:15.106
+AWT-EventQueue-0,Get location by id,2020-06-03 22:32:21.428
+AWT-EventQueue-0,Update location name,2020-06-03 22:32:21.439
+AWT-EventQueue-0,Get locations,2020-06-03 22:32:22.592
+AWT-EventQueue-0,Get location by id,2020-06-03 22:32:25.156
+AWT-EventQueue-0,Update location name,2020-06-03 22:32:25.166
+AWT-EventQueue-0,Get locations,2020-06-03 22:32:26.643
+AWT-EventQueue-0,Get location by id,2020-06-03 22:33:07.399
+Thread-0,Add ticket details,2020-06-03 22:33:34.679
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:33:36.367
+Thread-1,Add ticket details,2020-06-03 22:33:39.362
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:33:40.943
+AWT-EventQueue-0,Get event by id,2020-06-03 22:33:50.487
+AWT-EventQueue-0,Remove event by id,2020-06-03 22:33:50.498
+AWT-EventQueue-0,Get all the events,2020-06-03 22:33:51.882
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:33:51.891
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:33:51.904
+Thread-2,Add event,2020-06-03 22:37:38.535
+AWT-EventQueue-0,Get all the events,2020-06-03 22:38:21.087
+Thread-3,Add event,2020-06-03 22:38:55.984
+AWT-EventQueue-0,Get all the events,2020-06-03 22:38:57.49
+Thread-4,Add ticket details,2020-06-03 22:39:36.267
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:39:37.86
+Thread-5,Add ticket details,2020-06-03 22:39:40.415
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:39:42.208
+Thread-6,Add ticket details,2020-06-03 22:39:52.203
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:39:53.538
+AWT-EventQueue-0,Add ticket,2020-06-03 22:40:40.969
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:40:40.981
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:40:40.99
+AWT-EventQueue-0,Get event by id,2020-06-03 22:40:40.998
+AWT-EventQueue-0,Get client by id,2020-06-03 22:40:41.007
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:40:42.335
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:40:50.025
+AWT-EventQueue-0,Remove ticket details by id,2020-06-03 22:40:50.038
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:40:52.2
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:40:52.209
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:41:25.146
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:41:25.156
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:41:25.163
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:41:25.171
+AWT-EventQueue-0,Get event by id,2020-06-03 22:41:25.18
+AWT-EventQueue-0,Get client by id,2020-06-03 22:41:25.189
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:41:26.646
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:45:48.513
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:45:48.521
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:45:48.529
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:45:48.537
+AWT-EventQueue-0,Get event by id,2020-06-03 22:45:48.545
+AWT-EventQueue-0,Get client by id,2020-06-03 22:45:48.554
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:45:50.278
+AWT-EventQueue-0,Get client by id,2020-06-03 22:46:25.794
+AWT-EventQueue-0,Get client by id,2020-06-03 22:46:36.148
+Thread-7,Update client name,2020-06-03 22:46:36.159
+AWT-EventQueue-0,Get all clients,2020-06-03 22:46:37.275
+AWT-EventQueue-0,Add ticket,2020-06-03 22:47:07.04
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:47:07.053
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:47:07.061
+AWT-EventQueue-0,Get event by id,2020-06-03 22:47:07.07
+AWT-EventQueue-0,Get client by id,2020-06-03 22:47:07.08
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:47:08.188
+AWT-EventQueue-0,Add ticket,2020-06-03 22:47:20.974
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:47:20.989
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:47:20.997
+AWT-EventQueue-0,Get event by id,2020-06-03 22:47:21.006
+AWT-EventQueue-0,Get client by id,2020-06-03 22:47:21.015
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:47:23.638
+AWT-EventQueue-0,Add ticket,2020-06-03 22:47:27.062
+AWT-EventQueue-0,Add ticket,2020-06-03 22:47:39.463
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:47:39.477
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:47:39.486
+AWT-EventQueue-0,Get event by id,2020-06-03 22:47:39.494
+AWT-EventQueue-0,Get client by id,2020-06-03 22:47:39.503
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:47:41.08
+AWT-EventQueue-0,Add ticket,2020-06-03 22:47:50.676
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:47:50.69
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:47:50.698
+AWT-EventQueue-0,Get event by id,2020-06-03 22:47:50.706
+AWT-EventQueue-0,Get client by id,2020-06-03 22:47:50.714
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:47:52.453
+AWT-EventQueue-0,Add ticket,2020-06-03 22:48:21.881
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:48:21.894
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:48:21.903
+AWT-EventQueue-0,Get event by id,2020-06-03 22:48:21.912
+AWT-EventQueue-0,Get client by id,2020-06-03 22:48:21.922
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:48:23.093
+AWT-EventQueue-0,Add ticket,2020-06-03 22:48:36.269
+Thread-8,Add ticket details,2020-06-03 22:49:06.671
+AWT-EventQueue-0,Get ticket details,2020-06-03 22:49:09.948
+AWT-EventQueue-0,Add ticket,2020-06-03 22:49:20.879
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:49:20.894
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:49:20.903
+AWT-EventQueue-0,Get event by id,2020-06-03 22:49:20.912
+AWT-EventQueue-0,Get client by id,2020-06-03 22:49:20.921
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:49:22.308
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:50:24.967
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:50:24.977
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:50:24.985
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:50:24.993
+AWT-EventQueue-0,Get event by id,2020-06-03 22:50:25.001
+AWT-EventQueue-0,Get client by id,2020-06-03 22:50:25.01
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:50:26.204
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:50:44.863
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:50:44.871
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:50:44.878
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:50:44.886
+AWT-EventQueue-0,Get event by id,2020-06-03 22:50:44.894
+AWT-EventQueue-0,Get client by id,2020-06-03 22:50:44.903
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:50:46.135
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:50:56.169
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:50:56.18
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:50:56.188
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:50:56.196
+AWT-EventQueue-0,Get event by id,2020-06-03 22:50:56.205
+AWT-EventQueue-0,Get client by id,2020-06-03 22:50:56.214
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:50:57.295
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:51:06.931
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:51:06.939
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:51:06.947
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:51:06.955
+AWT-EventQueue-0,Get event by id,2020-06-03 22:51:06.964
+AWT-EventQueue-0,Get client by id,2020-06-03 22:51:06.973
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:51:08.094
+AWT-EventQueue-0,Get ticket by id,2020-06-03 22:51:13.968
+AWT-EventQueue-0,Update ticket details id,2020-06-03 22:51:13.977
+AWT-EventQueue-0,Update final price of ticket,2020-06-03 22:51:13.985
+AWT-EventQueue-0,Get ticket details by id,2020-06-03 22:51:13.993
+AWT-EventQueue-0,Get event by id,2020-06-03 22:51:14.002
+AWT-EventQueue-0,Get client by id,2020-06-03 22:51:14.01
+AWT-EventQueue-0,Get sold tickets,2020-06-03 22:51:15.377
+AWT-EventQueue-0,Get client by id,2020-06-03 22:51:56.33
+AWT-EventQueue-0,Get client by id,2020-06-03 22:52:06.115
+AWT-EventQueue-0,Find ticket by client id,2020-06-03 22:52:06.125
+AWT-EventQueue-0,Get client by id,2020-06-03 22:52:10.617
+AWT-EventQueue-0,Find ticket by client id,2020-06-03 22:52:10.626
+main,Get sold tickets,2020-06-03 22:53:23.188
+main,Get all clients,2020-06-03 22:53:23.278
+main,Get ticket details,2020-06-03 22:53:23.304
+main,Get all the events,2020-06-03 22:53:23.509
+main,Get locations,2020-06-03 22:53:23.531
+AWT-EventQueue-0,,Add client,2020-06-03 22:54:06.328
+AWT-EventQueue-0,Get all clients,2020-06-03 22:54:07.518

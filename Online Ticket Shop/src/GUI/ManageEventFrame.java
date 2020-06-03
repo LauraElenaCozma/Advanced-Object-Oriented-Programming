@@ -1,52 +1,46 @@
 package GUI;
 
+import Main.Main;
 import Model.Event;
 import Service.EventService;
 import Thread.ThreadAddEvent;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 
 public class ManageEventFrame{
     private JPanel f = new JPanel();
-    private Connection con;
-    private EventService eventService = EventService.getInstance();
+    private EventService eventService = Main.eventService;
     String columns[] = {"Id Event", "Name", "Duration", "Price"};
     DefaultTableModel tableModelEvents = new DefaultTableModel(columns, 0);
-    Color background = new Color(164, 189, 186);
-    Color fontC = new Color(0, 0, 0);
-    Font font = new Font("Tahoma", Font.PLAIN, 18);
-    Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-    Color c1 = new Color(241, 241, 240);
-    Color c2 = new Color(0,0,0);
+
     public JPanel getPanel() {
         return f;
     }
-    public ManageEventFrame(String title) throws SQLException {
+    public ManageEventFrame() throws SQLException {
 
         JButton add = new JButton("Add Event");
         add.setBounds(20, 55, 200, 50);
-        styleForButton(add, c2, c1);
+        styleForButton(add, MainFrame.c2, MainFrame.c1);
         JButton remove = new JButton("Remove Event");
         remove.setBounds(20, 185, 200, 50);
-        styleForButton(remove, c1,c2);
+        styleForButton(remove, MainFrame.c1,MainFrame.c2);
         JButton update = new JButton("Update Event");
         update.setBounds(20, 315, 200, 50);
-        styleForButton(update, c2,c1);
+        styleForButton(update, MainFrame.c2,MainFrame.c1);
         JButton get = new JButton("Get Event");
         get.setBounds(20, 445, 200, 50);
-        styleForButton(get, c1, c2);
+        styleForButton(get, MainFrame.c1, MainFrame.c2);
         JPanel ptable = new JPanel();
         ptable.setBounds(300, 20, 700, 200);
         ptable.setLayout(null);
-        ptable.setBackground(background);
+        ptable.setBackground(MainFrame.background);
         JLabel titleTable = new JLabel("All the events are here:");
-        titleTable.setFont(font);
-        titleTable.setForeground(fontC);
+        titleTable.setFont(MainFrame.font);
+        titleTable.setForeground(MainFrame.fontC);
         titleTable.setBounds(50, 0, 300, 20);
         ptable.add(titleTable);
         getEvents(ptable);
@@ -54,7 +48,7 @@ public class ManageEventFrame{
         JPanel paction = new JPanel();
         paction.setLayout(null);
         paction.setBounds(300, 230, 700, 500);
-        paction.setBackground(background);
+        paction.setBackground(MainFrame.background);
 
         add.addActionListener(event -> putPanel(paction, addEvent()));
         remove.addActionListener(event -> putPanel(paction, removeEventById()));
@@ -68,7 +62,7 @@ public class ManageEventFrame{
         f.add(ptable);
         f.add(paction);
         f.setSize(1300, 1000);
-        f.setBackground(background);
+        f.setBackground(MainFrame.background);
         f.setLayout(null);
     }
 
@@ -92,36 +86,36 @@ public class ManageEventFrame{
     public JPanel addEvent() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 400, 400);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
         JLabel title = new JLabel("Enter the data to add a new event");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(50, 10, 300, 20);
         JLabel nameLabel = new JLabel("Name: " );
         JTextField name = new JTextField();
         nameLabel.setBounds(5, 60, 200, 30);
-        nameLabel.setFont(font2);
-        nameLabel.setForeground(fontC);
+        nameLabel.setFont(MainFrame.font2);
+        nameLabel.setForeground(MainFrame.fontC);
         name.setBounds(80, 60, 200, 30);
 
         JLabel durationLabel = new JLabel("Duration: " );
         JTextField duration = new JTextField();
         durationLabel.setBounds(5, 110, 200, 30);
-        durationLabel.setFont(font2);
-        durationLabel.setForeground(fontC);
+        durationLabel.setFont(MainFrame.font2);
+        durationLabel.setForeground(MainFrame.fontC);
         duration.setBounds(80, 110, 200, 30);
 
         JLabel priceLabel = new JLabel("Price: " );
         JTextField price = new JTextField();
         priceLabel.setBounds(5, 160, 200, 30);
-        priceLabel.setFont(font2);
-        priceLabel.setForeground(fontC);
+        priceLabel.setFont(MainFrame.font2);
+        priceLabel.setForeground(MainFrame.fontC);
         price.setBounds(80, 160, 200, 30);
 
         JButton button = new JButton("Add Event");
         button.setBounds(80, 225, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> addEventDB(name, duration, price));
 
 
@@ -177,31 +171,31 @@ public class ManageEventFrame{
     public JPanel updatePriceOfEventById() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 250);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
 
         JLabel title = new JLabel("Enter an id to update the price of that event");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(20, 10, 500, 20);
 
         JLabel idLabel = new JLabel("Id of event:");
         JTextField id = new JTextField();
         idLabel.setBounds(10, 70, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         id.setBounds(100, 70, 200, 30);
 
         JLabel priceLabel = new JLabel("New Price:");
         JTextField price = new JTextField();
         priceLabel.setBounds(10, 120, 200, 30);
-        priceLabel.setFont(font2);
-        priceLabel.setForeground(fontC);
+        priceLabel.setFont(MainFrame.font2);
+        priceLabel.setForeground(MainFrame.fontC);
         price.setBounds(100, 120, 200, 30);
 
         JButton button = new JButton("Update event");
         button.setBounds(100, 185, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> updatePriceOfEventByIdDB(id, price));
         panel.add(title);
         panel.add(id);
@@ -244,23 +238,23 @@ public class ManageEventFrame{
     public JPanel removeEventById() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 400, 250);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
         JLabel title = new JLabel("Enter an id to remove that event");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(70, 10, 300, 20);
 
         JLabel idLabel = new JLabel("Id of event:");
         JTextField id = new JTextField();
         idLabel.setBounds(10, 70, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         id.setBounds(100, 70, 200, 30);
 
         JButton button = new JButton("Delete event");
         button.setBounds(100, 135, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> removeEventByIdDB(id));
         panel.add(title);
         panel.add(id);
@@ -299,43 +293,48 @@ public class ManageEventFrame{
     }
 
     public void getEvents(JPanel root) {
-        ArrayList<Event> events = eventService.getEvents();
+        try {
+            ArrayList<Event> events = eventService.getEvents();
 
-        JTable tableEvents = new JTable(tableModelEvents);
+            JTable tableEvents = new JTable(tableModelEvents);
 
-        for(Event e : events) {
-            Object ev[] = {e.getIdEvent(), e.getName(), e.getDuration(), e.getPrice()};
-            tableModelEvents.addRow(ev);
+            for(Event e : events) {
+                Object ev[] = {e.getIdEvent(), e.getName(), e.getDuration(), e.getPrice()};
+                tableModelEvents.addRow(ev);
+            }
+
+            JScrollPane scrollEvent = new JScrollPane(tableEvents);
+            scrollEvent.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollEvent.setBounds(0, 35, 600, 150);
+
+            root.add(scrollEvent);
         }
-
-        JScrollPane scrollEvent = new JScrollPane(tableEvents);
-        scrollEvent.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollEvent.setBounds(0, 35, 600, 150);
-
-        root.add(scrollEvent);
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }
 
     public JPanel getEventById() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 250);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
 
         JLabel title = new JLabel("Enter an id to see that event");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(80, 10, 500, 20);
 
         JLabel idLabel = new JLabel("Id of event:");
         JTextField id = new JTextField();
         idLabel.setBounds(10, 70, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         id.setBounds(100, 70, 200, 30);
 
         JButton button = new JButton("Get event");
         button.setBounds(100, 120, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> getEventByIdDB(id, panel));
 
         panel.add(title);

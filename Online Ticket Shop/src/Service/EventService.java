@@ -2,100 +2,78 @@ package Service;
 
 import Model.Event;
 import Repository.EventRepository;
-import Service.Audit.*;
+import Audit.*;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class EventService {
 
-    private EventRepository eventRepository = new EventRepository();
+
+    private EventRepository eventRepository = null;
     private static EventService instance;
-
-    static {
-        try {
-            instance = new EventService();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
     private static AuditService auditService = AuditService.getInstance();
-    private EventService() throws SQLException {
+
+
+    private EventService(Connection connection) {
+
+        eventRepository = new EventRepository(connection);
     }
 
-    public static EventService getInstance() {
+    public static EventService getInstance(Connection connection) {
+
+        if(instance == null) {
+            instance = new EventService(connection);
+        }
         return instance;
     }
 
     public Event addEvent(Event e) throws SQLException {
-        auditService.writeInAudit( Thread.currentThread().getName() + ",Add event");
+        auditService.writeInAudit( "Add event");
         eventRepository.addEvent(e);
         return e;
     }
 
-    public void removeEventByIdEvent(int id) {
-        TicketDetailsService ticketDetailsService =  TicketDetailsService.getInstance();
-        SoldTicketService soldTicketService = SoldTicketService.getInstance();
-
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Remove event by id");
+    public void removeEventByIdEvent(int id) throws SQLException {
+        auditService.writeInAudit("Remove event by id");
         eventRepository.removeEventById(id);
-        //ticketDetailsService.removeTicketByEventId(id); //remove sell tickets with this event id also
-        //ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
     }
 
     //find
-    public ArrayList<Event> findEventByName(String name) {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Get event by name");
+    public ArrayList<Event> findEventByName(String name) throws SQLException {
+        auditService.writeInAudit("Get event by name");
         return eventRepository.findEventByName(name);
     }
 
     //update
-    public void updateNameEvent(int id,  String newName) {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Update name of an event given by id");
-        /*Event e = eventRepository.getEventById(id);
-        if(e == null)
-            throw new IllegalArgumentException("No event having this id!");*/
+    public void updateNameEvent(int id,  String newName) throws SQLException {
+        auditService.writeInAudit("Update name of an event given by id");
         eventRepository.updateNameEvent(id, newName);
-        //ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
 
 
     }
 
-    public void updatePriceEventById(int id,  double newPrice) {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Update price of an event given by id");
-        /*Event e = eventRepository.getEventById(id);
-        if(e == null)
-            throw new IllegalArgumentException("No event having this id!");*/
+    public void updatePriceEventById(int id,  double newPrice) throws SQLException {
+        auditService.writeInAudit("Update price of an event given by id");
         eventRepository.updatePriceEventById(id, newPrice);
-        //ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
-
 
     }
 
-    public void updateDurationEventById(int id,  int newDuration) {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Update duration of an event given by id");
-        /*Event e = eventRepository.getEventById(id);
-        if(e == null)
-            throw new IllegalArgumentException("No event having this id!");*/
+    public void updateDurationEventById(int id,  int newDuration) throws SQLException {
+        auditService.writeInAudit("Update duration of an event given by id");
         eventRepository.updateDurationEventById(id, newDuration);
-        //ioFileService.updateFile(fileEvent, eventRepository.getEvents(), "events.csv");
 
     }
 
-    public ArrayList<Event> getEvents() {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Get all the events");
+    public ArrayList<Event> getEvents() throws SQLException {
+        auditService.writeInAudit("Get all the events");
         return eventRepository.getEvents();
     }
 
-    public Event getEventById(int id) {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Get event by id");
+    public Event getEventById(int id) throws SQLException {
+        auditService.writeInAudit("Get event by id");
         return eventRepository.getEventById(id);
     }
 
-    public EventRepository getEventRepository() {
-        auditService.writeInAudit(Thread.currentThread().getName() + ",Get eventRepository");
-        return eventRepository;
-    }
 }

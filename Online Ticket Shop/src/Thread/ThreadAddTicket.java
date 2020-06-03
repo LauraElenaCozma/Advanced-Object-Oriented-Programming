@@ -1,26 +1,27 @@
 package Thread;
 
 import Main.Main;
-import Model.Event;
+import Model.TicketDetails;
+
 
 import java.sql.SQLException;
 
-public class ThreadAddEvent extends Thread
-{
-    private Event e;
-    public ThreadAddEvent(Event e) {
-        this.e = e;
+public class ThreadAddTicket extends Thread {
+
+    private TicketDetails t;
+    public ThreadAddTicket(TicketDetails t) {
+
+        this.t = t;
     }
 
     @Override
     public void run() {
         try {
-            Main.eventService.addEvent(e);
+            Main.ticketDetailsService.addTicket(t);
         }
         catch(SQLException e)
         {
             throw new RuntimeException("Error");
         }
-
     }
 }

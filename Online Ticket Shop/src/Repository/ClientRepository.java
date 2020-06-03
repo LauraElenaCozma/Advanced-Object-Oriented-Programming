@@ -6,26 +6,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.ArrayList;
 
 import static java.sql.Types.*;
 
 public class ClientRepository{
     //repo for client
-    private Set<Client> clients;
-    String url = "jdbc:mysql://localhost:3306/ticketshop";
-    String username = "root";
-    String password = "1234";
     Connection con;
 
-    public ClientRepository() {
+    public ClientRepository(Connection con) {
 
-        clients = new TreeSet<>(new ComparatorClients());
+        this.con = con;
     }
 
     public void addClient(Client c) throws SQLException {
         //add an new Client
-        con = DriverManager.getConnection(url, username, password);
         String sql = "INSERT INTO clients VALUES(NULL, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = con.prepareStatement(sql);
         String className = c.getClass().getSimpleName();
@@ -55,30 +49,25 @@ public class ClientRepository{
 
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     //remove
     public void removeClientById(int id) throws SQLException {
         //remove a client by id
-        con = DriverManager.getConnection(url, username, password);
         String sql = "DELETE FROM clients WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     public void removeClientByName(String name) throws SQLException {
         //remove a client by name
-        con = DriverManager.getConnection(url, username, password);
         String sql = "DELETE FROM clients WHERE name = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, name);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     //find
@@ -87,7 +76,6 @@ public class ClientRepository{
         //can be 2 different clients with the same name
 
         ArrayList<Client> c= new ArrayList<>();
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM clients WHERE UPPER(name) = UPPER(?)";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, name);
@@ -109,64 +97,53 @@ public class ClientRepository{
             }
         }
         statement.close();
-        con.close();
         return c;
     }
 
     //update
     public void updateClientName(String name, String newName) throws SQLException {
         //update a client name with a new name
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE clients SET name = ? WHERE name = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, newName);
         statement.setString(2, name);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     public void updateClientName(int id, String newName) throws SQLException {
         //update a client name with a new name. Client id is given here
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE clients SET name = ? WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, newName);
         statement.setInt(2, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     public void updateClientEmail(int id, String newEmail) throws SQLException {
         //update client email of a client(specified by id)
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE clients SET email = ? WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, newEmail);
         statement.setInt(2, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     public void updateClientPhone(int id, String newPhone) throws SQLException {
         //update client phone number
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE clients SET phone_number = ? WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, newPhone);
         statement.setInt(2, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     public Set<Client> getClients() throws SQLException {
-        //return all the elements in client
-        //return clients;
+        //return all clients
         Set<Client> c = new TreeSet<>(new ComparatorClients());
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM clients";
         Statement statement = con.createStatement();
         ResultSet rs = statement.executeQuery(sql);
@@ -186,13 +163,11 @@ public class ClientRepository{
                     break;
             }
         statement.close();
-        con.close();
         return c;
     }
 
     public Client getClientById(int id) throws SQLException {
         //return client having id = id
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM clients WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
@@ -218,7 +193,6 @@ public class ClientRepository{
             }
         }
         statement.close();
-        con.close();
 
         return c;
     }

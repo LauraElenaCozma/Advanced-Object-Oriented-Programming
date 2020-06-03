@@ -1,5 +1,6 @@
 package GUI;
 
+import Main.Main;
 import Model.Event;
 import Model.Location;
 import Model.SoldTicket;
@@ -12,42 +13,38 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class ManageLocationFrame{
     private JPanel f = new JPanel();
-    private Connection con;
-    private LocationService locationService= LocationService.getInstance();
+    private LocationService locationService= Main.locationService;
     String columns[] = {"Id Location", "Venue", "Country", "City", "Location name"};
     DefaultTableModel tableModelLocations = new DefaultTableModel(columns, 0);
-    Color background = new Color(164, 189, 186);
-    Color fontC = new Color(0, 0, 0);
-    Font font = new Font("Tahoma", Font.PLAIN, 18);
-    Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-    Color c1 = new Color(241, 241, 240);
-    Color c2 = new Color(0,0,0);
+
 
     public JPanel getPanel() {
         return f;
     }
-    public ManageLocationFrame(String title) throws SQLException {
+    public ManageLocationFrame() throws SQLException {
+
         JButton add = new JButton("Add Location");
         add.setBounds(20, 55, 200, 50);
-        styleForButton(add, c2, c1);
+        styleForButton(add, MainFrame.c2, MainFrame.c1);
         JButton remove = new JButton("Remove Location");
         remove.setBounds(20, 185, 200, 50);
-        styleForButton(remove, c1,c2);
+        styleForButton(remove, MainFrame.c1,MainFrame.c2);
         JButton update = new JButton("Update Location");
         update.setBounds(20, 315, 200, 50);
-        styleForButton(update, c2,c1);
+        styleForButton(update, MainFrame.c2,MainFrame.c1);
         JButton get = new JButton("Get Location");
         get.setBounds(20, 445, 200, 50);
-        styleForButton(get, c1, c2);
+        styleForButton(get, MainFrame.c1, MainFrame.c2);
         JPanel ptable = new JPanel();
         ptable.setBounds(300, 20, 700, 170);
         ptable.setLayout(null);
-        ptable.setBackground(background);
+        ptable.setBackground(MainFrame.background);
         JLabel titleTable = new JLabel("All the locations are here:");
-        titleTable.setFont(font);
-        titleTable.setForeground(fontC);
+        titleTable.setFont(MainFrame.font);
+        titleTable.setForeground(MainFrame.fontC);
         titleTable.setBounds(50, 0, 300, 20);
         ptable.add(titleTable);
         getLocations(ptable);
@@ -55,7 +52,7 @@ public class ManageLocationFrame{
         JPanel paction = new JPanel();
         paction.setLayout(null);
         paction.setBounds(300, 200, 700, 500);
-        paction.setBackground(background);
+        paction.setBackground(MainFrame.background);
 
         add.addActionListener(event -> putPanel(paction, addLocation()));
         remove.addActionListener(event -> putPanel(paction, removeLocationById()));
@@ -69,7 +66,7 @@ public class ManageLocationFrame{
         f.add(ptable);
         f.add(paction);
         f.setSize(1300, 1000);
-        f.setBackground(background);
+        f.setBackground(MainFrame.background);
         f.setLayout(null);
 
     }
@@ -113,42 +110,42 @@ public class ManageLocationFrame{
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         JLabel title = new JLabel("Fill the fields to add a new location");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(35, 10, 400, 20);
         JLabel venueLabel = new JLabel("Venue: ");
         JTextField venue = new JTextField();
         venueLabel.setBounds(10, 60, 200, 30);
-        venueLabel.setFont(font2);
-        venueLabel.setForeground(fontC);
+        venueLabel.setFont(MainFrame.font2);
+        venueLabel.setForeground(MainFrame.fontC);
         venue.setBounds(80, 60, 200, 30);
 
         JLabel countryLabel = new JLabel("Country: ");
         JTextField country = new JTextField();
         countryLabel.setBounds(10, 110, 200, 30);
-        countryLabel.setFont(font2);
-        countryLabel.setForeground(fontC);
+        countryLabel.setFont(MainFrame.font2);
+        countryLabel.setForeground(MainFrame.fontC);
         country.setBounds(80, 110, 200, 30);
 
         JLabel cityLabel = new JLabel("City: ");
         JTextField city = new JTextField();
         cityLabel.setBounds(10, 160, 200, 30);
-        cityLabel.setFont(font2);
-        cityLabel.setForeground(fontC);
+        cityLabel.setFont(MainFrame.font2);
+        cityLabel.setForeground(MainFrame.fontC);
         city.setBounds(80, 160, 200, 30);
 
         JLabel nameLabel = new JLabel("Name: ");
         JTextField name = new JTextField();
         nameLabel.setBounds(10, 210, 200, 30);
-        nameLabel.setFont(font2);
-        nameLabel.setForeground(fontC);
+        nameLabel.setFont(MainFrame.font2);
+        nameLabel.setForeground(MainFrame.fontC);
         name.setBounds(80, 210, 200, 30);
 
         JButton button = new JButton("Add Location");
         button.setBounds(80, 275, 200, 40);
-        styleForButton(button,c1 , c2);
+        styleForButton(button,MainFrame.c1 , MainFrame.c2);
         button.addActionListener(event -> addLocationDB(venue, country, city, name));
         panel.add(title);
         panel.add(venue);
@@ -198,22 +195,22 @@ public class ManageLocationFrame{
     public JPanel removeLocationById() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
         JLabel title = new JLabel("Fill the fields to remove a location");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(75, 10, 400, 20);
         JLabel idLabel = new JLabel("Id of location: ");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(110, 60, 200, 30);
 
         JButton button = new JButton("Remove location");
         button.setBounds(110, 125, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> removeLocationByIdDB(id));
         panel.add(title);
         panel.add(id);
@@ -247,30 +244,30 @@ public class ManageLocationFrame{
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 600, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
         JLabel title = new JLabel("Fill the fields update the name of the location");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(35, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of location: ");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(110, 60, 200, 30);
 
         JLabel nameLabel = new JLabel("New name: ");
         nameLabel.setBounds(5, 110, 200, 30);
-        nameLabel.setFont(font2);
-        nameLabel.setForeground(fontC);
+        nameLabel.setFont(MainFrame.font2);
+        nameLabel.setForeground(MainFrame.fontC);
         JTextField name = new JTextField();
         name.setBounds(110, 110, 200, 30);
 
         JButton button = new JButton("Update location");
         button.setBounds(110, 175, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> updateLocationNameDB(id, name));
 
         panel.add(title);
@@ -310,22 +307,22 @@ public class ManageLocationFrame{
     public JPanel getLocationById() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 700, 400);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
         JLabel title = new JLabel("Fill the fields to see the location");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(85, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of location:");
         JTextField id = new JTextField();
         idLabel.setBounds(5, 60, 200, 30);
         id.setBounds(110, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JButton button = new JButton("Get location");
         button.setBounds(110, 125, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> getEventByIdDB(id, panel));
 
         panel.add(title);

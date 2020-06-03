@@ -1,65 +1,58 @@
 package GUI;
 
+import Main.Main;
+import Model.Client;
 import Model.SoldTicket;
-import Model.TicketDetails;
 import Service.SoldTicketService;
-import Service.TicketDetailsService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
-import Thread.ThreadAddSoldTicket;
+import java.util.Set;
 
 
 public class ManageSoldTicketFrame  {
-    private Connection con;
-    static private SoldTicketService soldTicketService= SoldTicketService.getInstance();
+
+    static private SoldTicketService soldTicketService= Main.soldTicketService;
     JPanel f = new JPanel();
     static String columns[] = {"Id Sold Ticket", "Id Client", "Id Ticket", "Price after discount"};
     static DefaultTableModel tableModelST = new DefaultTableModel(columns, 0);
-    Color background = new Color(167, 201, 209);
-    Color fontC = new Color(0, 0, 0);
-    Font font = new Font("Tahoma", Font.PLAIN, 18);
-    Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-    Color c1 = new Color(241, 241, 240);
-    Color c2 = new Color(0,0,0);
+
     public JPanel getPanel() {
         return f;
     }
 
-    public ManageSoldTicketFrame(String title) throws SQLException {
+    public ManageSoldTicketFrame() throws SQLException {
 
         JButton add = new JButton("Add Sold Ticket");
         add.setBounds(20, 55, 200, 50);
-        styleForButton(add, c2, c1);
+        styleForButton(add, MainFrame.c2, MainFrame.c1);
         JButton remove = new JButton("Remove Sold Ticket");
         remove.setBounds(20, 185, 200, 50);
-        styleForButton(remove, c1,c2);
+        styleForButton(remove, MainFrame.c1,MainFrame.c2);
         JButton update = new JButton("Update Sold Ticket");
         update.setBounds(20, 315, 200, 50);
-        styleForButton(update, c2,c1);
+        styleForButton(update, MainFrame.c2,MainFrame.c1);
         JButton get = new JButton("Get Sold Ticket");
         get.setBounds(20, 445, 200, 50);
-        styleForButton(get, c1, c2);
+        styleForButton(get, MainFrame.c1, MainFrame.c2);
         JPanel ptable = new JPanel();
         ptable.setBounds(300, 20, 700, 200);
         ptable.setLayout(null);
-        ptable.setBackground(background);
+        ptable.setBackground(MainFrame.background);
         JLabel titleTable = new JLabel("All the sold tickets are here:");
-        titleTable.setFont(font);
-        titleTable.setForeground(fontC);
+        titleTable.setFont(MainFrame.font);
+        titleTable.setForeground(MainFrame.fontC);
         titleTable.setBounds(50, 0, 300, 20);
         ptable.add(titleTable);
         getAllTickets(ptable);
 
         JPanel paction = new JPanel();
         paction.setLayout(null);
-        paction.setBounds(300, 230, 700, 500);
-        paction.setBackground(background);
+        paction.setBounds(300, 230, 700, 700);
+        paction.setBackground(MainFrame.background);
 
         add.addActionListener(event -> putPanel(paction, addSoldTicket()));
         remove.addActionListener(event -> putPanel(paction, removeSoldTicketById()));
@@ -73,7 +66,7 @@ public class ManageSoldTicketFrame  {
         f.add(ptable);
         f.add(paction);
         f.setSize(1300, 1000);
-        f.setBackground(background);
+        f.setBackground(MainFrame.background);
         f.setLayout(null);
     }
 
@@ -101,30 +94,30 @@ public class ManageSoldTicketFrame  {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 400, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Enter the data to add a new sold ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(35, 10, 400, 20);
 
         JLabel idClientLabel = new JLabel("Id Client: ");
         JTextField idClient = new JTextField();
         idClientLabel.setBounds(5, 60, 200, 30);
-        idClientLabel.setFont(font2);
-        idClientLabel.setForeground(fontC);
+        idClientLabel.setFont(MainFrame.font2);
+        idClientLabel.setForeground(MainFrame.fontC);
         idClient.setBounds(80, 60, 200, 30);
 
         JLabel idTicketLabel = new JLabel("Id Ticket: ");
         JTextField idTicket = new JTextField();
         idTicketLabel.setBounds(5, 110, 200, 30);
-        idTicketLabel.setFont(font2);
-        idTicketLabel.setForeground(fontC);
+        idTicketLabel.setFont(MainFrame.font2);
+        idTicketLabel.setForeground(MainFrame.fontC);
         idTicket.setBounds(80, 110, 200, 30);
 
         JButton button = new JButton("Add Sold Ticket");
         button.setBounds(80, 175, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> addSoldTicketDB(idClient, idTicket));
 
         panel.add(title);
@@ -141,17 +134,7 @@ public class ManageSoldTicketFrame  {
             int idC = Integer.parseInt(idClient.getText());
             int idT = Integer.parseInt(idTicket.getText());
 
-            ThreadAddSoldTicket thread = new ThreadAddSoldTicket(new SoldTicket(idC, idT));
-            thread.start();
-            try
-            {
-                thread.join();
-            }
-            catch (InterruptedException ex)
-            {
-                System.out.println("Thread error!");
-            }
-
+            soldTicketService.addTicket(new SoldTicket(idC, idT));
             JOptionPane.showMessageDialog(null, "Sold ticket was succesfully added!");
             ArrayList<SoldTicket> soldTickets = soldTicketService.getSoldTickets();
             SoldTicket st = soldTickets.get(soldTickets.size() - 1);
@@ -170,22 +153,22 @@ public class ManageSoldTicketFrame  {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 400, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Enter an id to remove that sold ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(50, 10, 400, 20);
 
         JLabel idLabel = new JLabel("Id of sold ticket:");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(120, 60, 200, 30);
         JButton button = new JButton("Remove ticket");
         button.setBounds(120, 125, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> removeTicketByIdDB(id));
         panel.add(title);
         panel.add(id);
@@ -242,24 +225,24 @@ public class ManageSoldTicketFrame  {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 500, 400);
         panel.setLayout(null);
-        panel.setBackground(background);
+        panel.setBackground(MainFrame.background);
 
         JLabel title = new JLabel("Enter an id to update the ticket id of that sold ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
         title.setBounds(25, 10, 500, 20);
 
         JLabel idLabel = new JLabel("Id of sold ticket:");
         idLabel.setBounds(5, 60, 200, 30);
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         JTextField id = new JTextField();
         id.setBounds(120, 60, 200, 30);
 
         JLabel newIdTLabel = new JLabel("New ticket id:");
         newIdTLabel.setBounds(5, 110, 200, 30);
-        newIdTLabel.setFont(font2);
-        newIdTLabel.setForeground(fontC);
+        newIdTLabel.setFont(MainFrame.font2);
+        newIdTLabel.setForeground(MainFrame.fontC);
         JTextField newIdT = new JTextField();
         newIdT.setBounds(120, 110, 200, 30);
         JButton button = new JButton("Update ticket");
@@ -298,32 +281,32 @@ public class ManageSoldTicketFrame  {
 
     public JPanel getSoldTicketById() {
         JPanel panel = new JPanel();
-        panel.setBounds(0, 0, 600, 400);
-        panel.setBackground(background);
+        panel.setBounds(0, 0, 600, 600);
+        panel.setBackground(MainFrame.background);
         panel.setLayout(null);
 
         JLabel title = new JLabel("Enter an id to see that sold ticket");
-        title.setFont(font);
-        title.setForeground(fontC);
-        title.setBounds(45, 10, 500, 20);
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
+        title.setBounds(65, 10, 500, 20);
 
         JLabel idLabel = new JLabel("Id of sold ticket:");
         JTextField id = new JTextField();
-        idLabel.setFont(font2);
-        idLabel.setForeground(fontC);
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
         idLabel.setBounds(5, 60, 200, 30);
         id.setBounds(120, 60, 200, 30);
 
         JButton button = new JButton("Get ticket");
         button.setBounds(120, 125, 200, 40);
-        styleForButton(button, c1, c2);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
         button.addActionListener(event -> getTicketByIdDB(id, panel));
 
         panel.add(title);
         panel.add(id);
         panel.add(idLabel);
         panel.add(button);
-
+        panel.add(getSoldTicketByClientId());
         return panel;
 
     }
@@ -353,4 +336,69 @@ public class ManageSoldTicketFrame  {
         }
     }
 
+    public JPanel getSoldTicketByClientId() {
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 200, 600, 400);
+        panel.setBackground(MainFrame.background);
+        panel.setLayout(null);
+
+        JLabel title = new JLabel("Enter an id for client to see his tickets");
+        title.setFont(MainFrame.font);
+        title.setForeground(MainFrame.fontC);
+        title.setBounds(65, 10, 500, 20);
+
+        JLabel idLabel = new JLabel("Id of client:");
+        JTextField id = new JTextField();
+        idLabel.setFont(MainFrame.font2);
+        idLabel.setForeground(MainFrame.fontC);
+        idLabel.setBounds(5, 60, 200, 30);
+        id.setBounds(120, 60, 200, 30);
+
+        JButton button = new JButton("Get tickets");
+        button.setBounds(120, 125, 200, 40);
+        styleForButton(button, MainFrame.c1, MainFrame.c2);
+        button.addActionListener(event -> getTicketByClientIdDB(id, panel));
+
+        panel.add(title);
+        panel.add(id);
+        panel.add(idLabel);
+        panel.add(button);
+
+        return panel;
+
+    }
+
+    void getTicketByClientIdDB(JTextField id, JPanel panel) {
+        try {
+            int i = Integer.parseInt(id.getText());
+            Client c = Main.clientService.getClientById(i);
+            if (c == null) {
+                JOptionPane.showMessageDialog(null, "There is no client having this id!");
+            }
+            else {
+                ArrayList<SoldTicket> tickets = soldTicketService.findSoldTicketByClientId(i);
+                if(tickets.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "No tickets found!");
+                }
+                else {
+                    DefaultTableModel tGet = new DefaultTableModel(columns, 0);
+                    JTable tTick = new JTable(tGet);
+                    tTick.setBounds(0,0, 600, 80);
+                    JScrollPane scrollPane = new JScrollPane(tTick);
+                    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    scrollPane.setBounds(0, 190, 600, 80);
+
+                    for(SoldTicket t : tickets) {
+                        Object[] obj = {t.getIdTicket(), t.getIdClient(), t.getIdTicketDetails(), t.getPriceAfterDiscount()};
+                        tGet.addRow(obj);
+
+                    }
+                    panel.add(scrollPane);
+                }
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "All fields are required!");
+        }
+    }
 }

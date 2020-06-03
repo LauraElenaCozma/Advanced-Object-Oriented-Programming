@@ -9,21 +9,16 @@ import java.util.ArrayList;
 
 public class SoldTicketRepository {
     //repository for sold tickets
-    private ArrayList<SoldTicket> tickets;
-    String url = "jdbc:mysql://localhost:3306/ticketshop";
-    String username = "root";
-    String password = "1234";
     Connection con;
 
-    public SoldTicketRepository() {
+    public SoldTicketRepository(Connection con) {
 
-        tickets = new ArrayList<>();
+        this.con = con;
     }
 
 
     //add
     public int addTicket(SoldTicket ticket) throws SQLException {
-        con = DriverManager.getConnection(url, username, password);
         String sql = "INSERT INTO soldtickets (id_soldticket, id_client, id_ticket) VALUES(NULL, ?, ?)";
         PreparedStatement statement = con.prepareStatement(sql);
 
@@ -38,49 +33,41 @@ public class SoldTicketRepository {
 
         statement.close();
         statement1.close();
-        con.close();
         return id;
     }
 
     //remove
     public void removeSoldTicketById(int id) throws SQLException {
         //remove Ticket with a given id
-        con = DriverManager.getConnection(url, username, password);
         String sql = "DELETE FROM soldtickets WHERE id_soldticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
 
     public void removeSoldTicketByTicketDetailsId(int id) throws SQLException {
         //remove ticket with a given event
-        con = DriverManager.getConnection(url, username, password);
         String sql = "DELETE FROM soldtickets WHERE id_ticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
 
     public void removeSoldTicketByClientId(int id) throws SQLException {
-        con = DriverManager.getConnection(url, username, password);
         String sql = "DELETE FROM soldtickets WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     //find
     public ArrayList<SoldTicket> findSoldTicketByTicketDetailsId(int id) throws SQLException {
         ArrayList<SoldTicket> array = new ArrayList<>();
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM soldtickets WHERE id_ticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
@@ -88,13 +75,11 @@ public class SoldTicketRepository {
         while(rs.next())
             array.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
         statement.close();
-        con.close();
         return array;
     }
 
     public ArrayList<SoldTicket> findSoldTicketByClientId(int id) throws SQLException {
         ArrayList<SoldTicket> array = new ArrayList<>();
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM soldtickets WHERE id_client = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
@@ -102,53 +87,46 @@ public class SoldTicketRepository {
         while(rs.next())
             array.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
         statement.close();
-        con.close();
         return array;
     }
 
     //update
 
     public void updateSoldTicketDetails(int id, int newId) throws SQLException {
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE soldtickets SET id_ticket = ? WHERE id_soldticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, newId);
         statement.setInt(2, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
+
     }
 
     public void updateSoldTicketClient(int id, int newId) throws SQLException {
         //update the clients of some tickets
-        con = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE soldtickets SET id_client = ? WHERE id_soldticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, newId);
         statement.setInt(2, id);
         statement.executeUpdate();
         statement.close();
-        con.close();
     }
 
     //get
     public ArrayList<SoldTicket> getTickets() throws SQLException {
 
-        //return tickets;
+        //return all tickets
         ArrayList<SoldTicket> t = new ArrayList<>();
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM soldtickets";
         Statement statement = con.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next())
             t.add(new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount")));
         statement.close();
-        con.close();
         return t;
     }
 
     public SoldTicket getTicketById(int id) throws SQLException {
-        con = DriverManager.getConnection(url, username, password);
         String sql = "SELECT * FROM soldtickets WHERE id_soldticket = ?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, id);
@@ -159,7 +137,6 @@ public class SoldTicketRepository {
             t = null;
         else t = new SoldTicket(rs.getInt("id_soldticket"), rs.getInt("id_client"), rs.getInt("id_ticket"), rs.getDouble("price_after_discount"));
         statement.close();
-        con.close();
 
         return t;
     }
